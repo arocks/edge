@@ -1,14 +1,15 @@
 > __Delete this blockquote.__
 >
-> This is Edge - a lighter, cutting-edge Django project skeleton.
-> __Features__: Python 3/Django 1.7 support, Bootstrap bundled, No South
+> __edge__ - a lighter, cutting-edge Django project skeleton.
+>
+> FEATURES: Python 3/Django 1.7 support, Bootstrap bundled, No South
 >
 > More information at: http://arunrocks.com/
 ***************************************************************************
 
 # {{ project_name }}
 
-{{ project_name }} is a <<short description>> built with [Python][0] using the [Django Web Framework][1].
+{{ project_name }} is a (short description) built with [Python][0] using the [Django Web Framework][1].
 
 This project has the following basic apps:
 
