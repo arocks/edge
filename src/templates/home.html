@@ -1,12 +1,12 @@
-{% extends "base.html" %}
+{% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
 
 {% templatetag openblock %} load staticfiles {% templatetag closeblock %}
 
-{% block title %}Kathi :: Home{% endblock %}
+{% templatetag openblock %} block title {% templatetag closeblock %}Kathi :: Home{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block navbar-brand %}Kathi <span class="glyphicon glyphicon-stats"></span>{% endblock %}
+{% templatetag openblock %} block navbar-brand {% templatetag closeblock %}Kathi <span class="glyphicon glyphicon-stats"></span>{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block container %}
+{% templatetag openblock %} block container {% templatetag closeblock %}
 <div class="jumbotron jumbotron-carousel corporate-jumbo">
   <div class="container">
     <div class="row">
@@ -40,4 +40,4 @@
   </div>
 </div>
 
-{% endblock %}
+{% templatetag openblock %} endblock container {% templatetag closeblock %}
