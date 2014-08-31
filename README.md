@@ -7,7 +7,7 @@
 > Quick start:
 > `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html myproj`
 > 
-> More information at: http://arunrocks.com/
+> More information at: https://github.com/arocks/edge/wiki
 
 # {{ project_name }}
 
