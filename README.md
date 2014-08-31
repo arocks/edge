@@ -5,7 +5,7 @@
 > FEATURES: Python 3/Django 1.7 support, Bootstrap bundled, No South
 >
 > Quick start:
-> `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html uproj`
+> `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html myproj`
 > 
 > More information at: http://arunrocks.com/
 
@@ -29,13 +29,14 @@ comes with virtualenv built-in. So create a virtual env by:
     $ python3.4 -m venv {{ project_name }}
     $ . {{ project_name }}/bin/activate
 
-> Sometimes, binaries like pip gets install inside `local/bin/`. So append
+> Sometimes, binaries like pip get installed inside `local/bin/`. So append
 > this line to `{{ project_name }}/bin/activate`:
-> PATH="$VIRTUAL_ENV/local/bin:$PATH"
+>
+> `PATH="$VIRTUAL_ENV/local/bin:$PATH"`
 
 Now the pip commands should work smoothly. Install all dependencies:
 
-    pip install -r requirements/local.txt
+    pip install -r dev-requirements.txt
 
 ### Detailed instructions
 
