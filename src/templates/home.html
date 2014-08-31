@@ -2,16 +2,16 @@
 
 {% templatetag openblock %} load staticfiles {% templatetag closeblock %}
 
-{% templatetag openblock %} block title {% templatetag closeblock %}Kathi :: Home{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% templatetag openblock %} block title {% templatetag closeblock %}{{ project_name }} :: Home{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% templatetag openblock %} block navbar-brand {% templatetag closeblock %}Kathi <span class="glyphicon glyphicon-stats"></span>{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% templatetag openblock %} block navbar-brand {% templatetag closeblock %}{{ project_name|title }} <span class="glyphicon glyphicon-stats"></span>{% templatetag openblock %} endblock {% templatetag closeblock %}
 
 {% templatetag openblock %} block container {% templatetag closeblock %}
 <div class="jumbotron jumbotron-carousel corporate-jumbo">
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12">
-        <h1>Kathi <span class="glyphicon glyphicon-stats"></span></h1>
+        <h1>{{ project_name|title }} <span class="glyphicon glyphicon-stats"></span></h1>
         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet!</p>
         <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
       </div>

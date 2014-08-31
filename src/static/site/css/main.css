@@ -1,3 +1,5 @@
+@import "buttonstyles.css";
+
 body {
   padding-top: 50px;
 }
@@ -12,4 +14,16 @@ body {
   padding-bottom: 40px;
   margin-top: 40px;
   border-top: 1px solid #eee;
+}
+
+/* Button styling: 3D effect */
+
+.btn-success:hover {
+	box-shadow: 0 4px #4cae4c;
+	top: 2px;
+}
+
+.btn-success:active {
+	box-shadow: 0 0 #4cae4c;
+	top: 6px;
 }
