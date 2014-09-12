@@ -8,18 +8,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+# Build paths inside the project like this: BASE_DIR / "directory"
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATE_DIRS = [BASE_DIR / 'templates', ]
+STATICFILES_DIRS = [BASE_DIR / 'static', ]
 
 # Use 12factor inspired environment variables or from a file
 import environ
 env = environ.Env()
-env_file = os.path.join(BASE_DIR, '{{ project_name }}', 'local.env')
-if os.path.isfile(env_file):
-    environ.Env.read_env(env_file)
+# Ideally your env file should be outside the git repo
+env_file = BASE_DIR / 'my_proj' / 'local.env'
+if env_file.is_file():
+    environ.Env.read_env(str(env_file))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
