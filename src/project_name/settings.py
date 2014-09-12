@@ -11,14 +11,15 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 # Build paths inside the project like this: BASE_DIR / "directory"
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIRS = [BASE_DIR / 'templates', ]
-STATICFILES_DIRS = [BASE_DIR / 'static', ]
+TEMPLATE_DIRS = [str(BASE_DIR / 'templates'), ]
+STATICFILES_DIRS = [str(BASE_DIR / 'static'), ]
 
 # Use 12factor inspired environment variables or from a file
 import environ
 env = environ.Env()
-# Ideally your env file should be outside the git repo
-env_file = BASE_DIR / 'my_proj' / 'local.env'
+# Ideally move env file should be outside the git repo
+# i.e. BASE_DIR.parent.parent
+env_file = BASE_DIR.parent / 'local.env'
 if env_file.is_file():
     environ.Env.read_env(str(env_file))
 
