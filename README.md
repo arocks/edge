@@ -5,8 +5,8 @@
 > FEATURES: Python 3/Django 1.7 support, Bootstrap bundled, No South
 >
 > Quick start:
-> `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html myproj`
-> 
+> `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env myproj`
+>
 > More information at: https://github.com/arocks/edge/wiki
 
 # {{ project_name }}
