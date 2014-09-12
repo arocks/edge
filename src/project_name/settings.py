@@ -14,12 +14,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
+# Use 12factor inspired environment variables or from a file
+import environ
+env = environ.Env()
+env_file = os.path.join(BASE_DIR, '{{ project_name }}', 'local.env')
+if os.path.isfile(env_file):
+    environ.Env.read_env(env_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "{{ secret_key }}"
+# Raises ImproperlyConfigured exception if SECRET_KEY not in os.environ
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -58,10 +65,9 @@ WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    # Raises ImproperlyConfigured exception if DATABASE_URL not in
+    # os.environ
+    'default': env.db(),
 }
 
 # Internationalization
