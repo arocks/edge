@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% templatetag openblock %} block description {% templatetag closeblock %}{% templatetag openblock %} endblock description {% templatetag closeblock %}">
     <meta name="author" content="Arun Ravindran">
-    <link rel="shortcut icon" href="{% templatetag openblock %} static 'site/ico/favicon.png' {% templatetag closeblock %}">
+    <link rel="shortcut icon" href="{% templatetag openblock %} static 'site/ico/favicon.ico' {% templatetag closeblock %}">
 
-    <title>{% templatetag openblock %} block title {% templatetag closeblock %}New Project{% templatetag openblock %} endblock {% templatetag closeblock %}</title>
+    <title>{% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openblock %} include "_brandname.html" {% templatetag closeblock %} :: {% templatetag openblock %} endblock {% templatetag closeblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% templatetag openblock %} static 'bootstrap/css/bootstrap.min.css' {% templatetag closeblock %}" rel="stylesheet">
@@ -41,19 +41,49 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% templatetag openblock %} url 'home' {% templatetag closeblock %}">{% templatetag openblock %} block navbar-brand {% templatetag closeblock %}New Project{% templatetag openblock %} endblock {% templatetag closeblock %}</a>
+          <a class="navbar-brand" href="{% templatetag openblock %} url 'home' {% templatetag closeblock %}">
+            {% templatetag openblock %} block navbar-brand {% templatetag closeblock %}
+              <img src="{% templatetag openblock %} static 'site/img/logo.png' {% templatetag closeblock %}" alt="logo">
+              {% templatetag openblock %} include "_brandname.html" {% templatetag closeblock %}
+            {% templatetag openblock %} endblock {% templatetag closeblock %}
+          </a>
         </div>
         {% templatetag openblock %} block navbar-menu {% templatetag closeblock %}
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            {% templatetag openblock %} block navbar-left {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% templatetag openblock %} block navbar-right {% templatetag closeblock %}
+              {% templatetag openblock %} if user.is_authenticated {% templatetag closeblock %}
+                {% templatetag openblock %} if user.is_staff {% templatetag closeblock %}
+                <li><a href="{% templatetag openblock %} url 'admin:index' {% templatetag closeblock %}">Admin</a></li>
+                {% templatetag openblock %} endif {% templatetag closeblock %}
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% templatetag openvariable %} user.get_full_name|default:user.username {% templatetag closevariable %} <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{% templatetag openblock %} url 'logout' {% templatetag closeblock %}">Logout</a></li>
+                  </ul>
+                </li>
+              {% templatetag openblock %} endif {% templatetag closeblock %}
+            {% templatetag openblock %} endblock {% templatetag closeblock %}
+          </ul>
           </ul>
         </div><!--/.nav-collapse -->
         {% templatetag openblock %} endblock {% templatetag closeblock %}
       </div>
     </div>
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
+
+    {% templatetag openblock %} block messages {% templatetag closeblock %}
+      {% templatetag openblock %} if messages {% templatetag closeblock %}
+        {% templatetag openblock %} for message in messages {% templatetag closeblock %}
+          <div class="alert alert-{% templatetag openvariable %} message.tags {% templatetag closevariable %}">  <!-- singular -->
+            <a class="close" data-dismiss="alert">×</a>
+            {% templatetag openvariable %} message|safe {% templatetag closevariable %}
+          </div>
+        {% templatetag openblock %} endfor {% templatetag closeblock %}
+      {% templatetag openblock %} endif {% templatetag closeblock %}
     {% templatetag openblock %} endblock {% templatetag closeblock %}
 
     {% templatetag openblock %} block container {% templatetag closeblock %}
@@ -69,10 +99,21 @@
 
     <!-- Site footer -->
     {% templatetag openblock %} block footer {% templatetag closeblock %}
+      <!-- Some social button for contact will do -->
+      <a name="contact"></a>
       <div class="container">
-        <div class="footer">
-          <p>&copy; Company 2013-{% now 'Y' %}</p>
+            <div class="footer">
+        <div class="row">
+          <div class="col-lg-6">
+              <p>&copy; Company {% templatetag openblock %} now 'Y' {% templatetag closeblock %}</p>
+          </div>
+          <div class="col-lg-6 text-right">
+            Connect with us on
+            <a href="#"><i class="fa fa-facebook"></i> Facebook</a> or
+            <a href="#"><i class="fa fa-twitter"></i> Twitter</a>
+          </div>
         </div>
+            </div>
       </div>
     {% templatetag openblock %} endblock {% templatetag closeblock %}
 
@@ -85,3 +126,4 @@
     {% templatetag openblock %} endblock scripts {% templatetag closeblock %}
   </body>
 </html>
+

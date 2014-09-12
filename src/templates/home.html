@@ -1,25 +1,49 @@
 {% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
 
 {% templatetag openblock %} load staticfiles {% templatetag closeblock %}
+{% templatetag openblock %} load crispy_forms_tags {% templatetag closeblock %}
 
-{% templatetag openblock %} block title {% templatetag closeblock %}{{ project_name }} :: Home{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openvariable %} block.super {% templatetag closevariable %}Home{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% templatetag openblock %} block navbar-brand {% templatetag closeblock %}{{ project_name|title }} <span class="glyphicon glyphicon-stats"></span>{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% templatetag openblock %} block navbar-left {% templatetag closeblock %}
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#footer">Contact</a></li>
+{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block navbar-right {% templatetag closeblock %}
+  {% templatetag openblock %} if not user.is_authenticated {% templatetag closeblock %}
+    {% templatetag openblock %} crispy signin_form {% templatetag closeblock %}
+  {% templatetag openblock %} else {% templatetag closeblock %}
+    {% templatetag openvariable %} block.super {% templatetag closevariable %}
+  {% templatetag openblock %} endif {% templatetag closeblock %}
+{% templatetag openblock %} endblock {% templatetag closeblock %}
 
 {% templatetag openblock %} block container {% templatetag closeblock %}
-<div class="jumbotron jumbotron-carousel corporate-jumbo">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <h1>{{ project_name|title }} <span class="glyphicon glyphicon-stats"></span></h1>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet!</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+  <div class="jumbotron jumbotron-carousel corporate-jumbo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-8">
+          <h1>{% templatetag openblock %} include "_brandname.html" {% templatetag closeblock %}</h1>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet!</p>
+        </div>
+        <div class="col-md-4 col-sm-4">
+
+          {% templatetag openblock %} if not user.is_authenticated {% templatetag closeblock %}
+            <div class="span3 well">
+              <legend>Create an Account</legend>
+              {% templatetag openblock %} crispy signup_form {% templatetag closeblock %}
+            </div>
+          {% templatetag openblock %} endif {% templatetag closeblock %}
+
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Example row of columns -->
+<!-- Benefits of the Django application -->
+<a name="about"></a>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
@@ -41,3 +65,4 @@
 </div>
 
 {% templatetag openblock %} endblock container {% templatetag closeblock %}
+

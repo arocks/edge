@@ -1,4 +1,5 @@
 @import "buttonstyles.css";
+@import "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css";
 
 body {
   padding-top: 50px;
@@ -16,14 +17,37 @@ body {
   border-top: 1px solid #eee;
 }
 
-/* Button styling: 3D effect */
-
-.btn-success:hover {
-	box-shadow: 0 4px #4cae4c;
-	top: 2px;
+.alert {
+    margin-bottom: 0;
 }
 
-.btn-success:active {
-	box-shadow: 0 0 #4cae4c;
-	top: 6px;
+.help-block {
+    display: none;
+}
+
+.navbar-form {
+    margin-right: 0;
+}
+
+/* Home page styling */
+.corporate-jumbo {
+    background: url("/static/site/img/banner.jpg") no-repeat center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #f5f5f5;
+}
+
+.corporate-jumbo .well {
+    background-color: rgba(245, 245, 245, .7);
+}
+
+.contact-banner {
+    padding: 100px 0;
+    background: #e0e0e0;
+    margin-top: 100px;
+}
+
+.footer a:hover {
+    text-decoration: none;
 }
