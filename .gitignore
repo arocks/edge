@@ -21,7 +21,7 @@ build
 *.log
 
 # Environment variables
-*.env
+# *.env
 
 # Django stuff:
 *.mo
