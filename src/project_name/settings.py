@@ -37,6 +37,11 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Turn off debug while imported by Celery with a workaround
+# See http://stackoverflow.com/a/4806384
+import sys
+if "celery" in sys.argv[0]:
+    DEBUG = False
 
 # Application definition
 
@@ -102,3 +107,8 @@ from django.contrib import messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+# Django Debug Toolbar
+if DEBUG:
+    INSTALLED_APPS += (
+        'debug_toolbar.apps.DebugToolbarConfig',)
