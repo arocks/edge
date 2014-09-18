@@ -38,6 +38,10 @@ Now the pip commands should work smoothly. Install all dependencies:
 
     pip install -r dev-requirements.txt
 
+Run migrations:
+
+    python manage.py migrate
+
 ### Detailed instructions
 
 Take a look at the docs for a detailed instructions guide.
