@@ -41,6 +41,19 @@ body {
     background-color: rgba(245, 245, 245, .7);
 }
 
+.corporate-jumbo p, .corporate-jumbo h1 {
+    color: #eee;
+    text-shadow: 0px 0px 2px black;
+}
+
+.corporate-jumbo p {
+    font-weight: 500;
+}
+
+.corporate-jumbo .well legend {
+    color: #333;
+}
+
 .contact-banner {
     padding: 100px 0;
     background: #e0e0e0;
