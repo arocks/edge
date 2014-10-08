@@ -63,3 +63,29 @@ body {
 .footer a:hover {
     text-decoration: none;
 }
+
+/* About page styling */
+#sec1 {
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAJklEQVQIW2NkAIILFy78NzAwYATRjCABZEGwAEwFiA1WBlIOUwkA72gTdDIYVO4AAAAASUVORK5CYII=) repeat;
+}
+
+.text-page {
+    padding: 120px 0;
+}
+
+#map-outer {
+    height: 440px;
+	padding: 40px 20px;
+	margin-bottom: 20px;
+	background-color:#FFF
+}
+
+#map-container {
+    height: 400px
+}
+
+@media all and (max-width: 768px) {
+	#map-outer  { height: 650px }
+}
+
+/* --- */

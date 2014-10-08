@@ -6,9 +6,7 @@
 {% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openvariable %} block.super {% templatetag closevariable %}Home{% templatetag openblock %} endblock {% templatetag closeblock %}
 
 {% templatetag openblock %} block navbar-left {% templatetag closeblock %}
-              <li class="active"><a href="/">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#footer">Contact</a></li>
+  {% templatetag openblock %} include "_navbar.html" with active_link="home" {% templatetag closeblock %}
 {% templatetag openblock %} endblock {% templatetag closeblock %}
 
 {% templatetag openblock %} block navbar-right {% templatetag closeblock %}

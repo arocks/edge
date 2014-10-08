@@ -71,3 +71,7 @@ class LogoutView(generic.RedirectView):
         messages.add_message(request, messages.INFO,
                              "Logout successful!")
         return super().get(request, *args, **kwargs)
+
+
+class AboutView(generic.TemplateView):
+    template_name = "about.html"
