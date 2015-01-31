@@ -50,6 +50,8 @@ INSTALLED_APPS = (
     'django_admin_bootstrapped',
     'crispy_forms',
 
+    'profiles',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from accounts.views import SignInAndSignUp, LogoutView, AboutView
+from profiles.views import SignInAndSignUp, LogoutView, AboutView
 
 urlpatterns = patterns(
     '',
