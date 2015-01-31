@@ -7,7 +7,7 @@ class BaseProfile(models.Model):
                                 primary_key=True)
     # Add more user profile fields here. Make sure they are nullable
     # or with default values
-    flair = models.CharField("Flair", max_length=200, blank=True, null=True)
+    homepage = models.URLField("Personal homepage", blank=True, null=True)
 
     class Meta:
         abstract = True

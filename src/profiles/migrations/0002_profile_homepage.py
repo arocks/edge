@@ -13,8 +13,8 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='profile',
-            name='flair',
-            field=models.CharField(null=True, verbose_name='Flair', blank=True, max_length=200),
+            name='homepage',
+            field=models.URLField(null=True, blank=True, verbose_name='Personal homepage'),
             preserve_default=True,
         ),
     ]
