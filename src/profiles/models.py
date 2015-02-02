@@ -7,6 +7,10 @@ class BaseProfile(models.Model):
                                 primary_key=True)
     # Add more user profile fields here. Make sure they are nullable
     # or with default values
+    picture = models.ImageField('Profile picture',
+                                upload_to='profile_pics/%Y-%m-%d/',
+                                null=True,
+                                blank=True)
     homepage = models.URLField("Personal homepage", blank=True, null=True)
 
     class Meta:

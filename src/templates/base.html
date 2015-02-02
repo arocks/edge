@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-{% templatetag openblock %} load staticfiles {% templatetag closeblock %}
+    {% templatetag openblock %} load staticfiles {% templatetag closeblock %}
+    {% templatetag openblock %} load thumbnail {% templatetag closeblock %}
+    
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,7 +62,12 @@
                 <li><a href="{% templatetag openblock %} url 'admin:index' {% templatetag closeblock %}">Admin</a></li>
                 {% templatetag openblock %} endif {% templatetag closeblock %}
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% templatetag openvariable %} user.get_full_name|default:user.username {% templatetag closevariable %} <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle profile-menu" data-toggle="dropdown">
+			<img src="{% templatetag openblock %} thumbnail user.profile.picture|default:'default_profile.jpg' 30x30 crop {% templatetag closeblock %}" alt="" />
+			{% templatetag openvariable %} user.get_full_name|default:user.username {% templatetag closevariable %}
+			<span class="caret"></span>
+		    </a>
+		    
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{% templatetag openblock %} url 'logout' {% templatetag closeblock %}">Logout</a></li>
                   </ul>

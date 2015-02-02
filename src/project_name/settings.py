@@ -14,6 +14,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIRS = [str(BASE_DIR / 'templates'), ]
 STATICFILES_DIRS = [str(BASE_DIR / 'static'), ]
 
+MEDIA_ROOT = str(BASE_DIR / 'media')
+MEDIA_URL = "/media/"
+
 # Use 12factor inspired environment variables or from a file
 import environ
 env = environ.Env()
@@ -49,6 +52,7 @@ INSTALLED_APPS = (
     'django_admin_bootstrapped.bootstrap3',
     'django_admin_bootstrapped',
     'crispy_forms',
+    'easy_thumbnails',
 
     'profiles',
 

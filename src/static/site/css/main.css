@@ -28,6 +28,11 @@ body {
     margin-right: 0;
 }
 
+.navbar-nav>li>a.profile-menu {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 /* Home page styling */
 .corporate-jumbo {
     background: url("/static/site/img/banner.jpg") no-repeat center center;
