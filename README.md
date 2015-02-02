@@ -1,5 +1,6 @@
-> __Delete this blockquote.__
->
+    {% comment "This blockquote will be deleted" %}
+
+> 
 > __edge__ - a lighter, cutting-edge Django project skeleton.
 >
 > FEATURES: Python 3/Django 1.7 support, Bootstrap bundled, No South
@@ -9,6 +10,7 @@
 >
 > More information at: https://github.com/arocks/edge/wiki
 
+    {% endcomment %}
 # {{ project_name }}
 
 {{ project_name }} is a (short description) built with [Python][0] using the [Django Web Framework][1].
