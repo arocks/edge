@@ -64,12 +64,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle profile-menu" data-toggle="dropdown">
 			<img src="{% templatetag openblock %} thumbnail user.profile.picture|default:'default_profile.jpg' 30x30 crop {% templatetag closeblock %}" alt="" />
-			{% templatetag openvariable %} user.get_full_name|default:user.username {% templatetag closevariable %}
+			{% templatetag openvariable %} user.get_full_name|default:user.username|truncatechars:20 {% templatetag closevariable %}
 			<span class="caret"></span>
 		    </a>
 		    
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="{% templatetag openblock %} url 'logout' {% templatetag closeblock %}">Logout</a></li>
+                    <li><a href="{% templatetag openblock %} url 'profiles:show_self' {% templatetag closeblock %}">Profile</a></li>
+                    <li><a href="{% templatetag openblock %} url 'accounts:logout' {% templatetag closeblock %}">Logout</a></li>
                   </ul>
                 </li>
               {% templatetag openblock %} endif {% templatetag closeblock %}
@@ -133,3 +134,4 @@
     {% templatetag openblock %} endblock scripts {% templatetag closeblock %}
   </body>
 </html>
+

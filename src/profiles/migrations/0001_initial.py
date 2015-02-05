@@ -15,7 +15,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Profile',
             fields=[
-                ('user', models.OneToOneField(primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
+                ('user', models.OneToOneField(serialize=False, primary_key=True, to=settings.AUTH_USER_MODEL)),
+                ('picture', models.ImageField(verbose_name='Profile picture', upload_to='profile_pics/%Y-%m-%d/', blank=True, null=True)),
+                ('bio', models.CharField(verbose_name='Short Bio', max_length=200, blank=True, null=True)),
+                ('email_verified', models.BooleanField(default=False, verbose_name='Email verified')),
             ],
             options={
                 'abstract': False,

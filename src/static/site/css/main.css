@@ -35,7 +35,9 @@ body {
 
 /* Home page styling */
 .corporate-jumbo {
-    background: url("/static/site/img/banner.jpg") no-repeat center center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url("/static/site/img/banner.jpg");
+    background-repeat: no-repeat;
+    background-position: 80% center;
     background-attachment: fixed;
     -webkit-background-size: cover;
     background-size: cover;
@@ -74,19 +76,33 @@ body {
     background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAJklEQVQIW2NkAIILFy78NzAwYATRjCABZEGwAEwFiA1WBlIOUwkA72gTdDIYVO4AAAAASUVORK5CYII=) repeat;
 }
 
+/* Profile page styling */
+.profile-head {
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAJklEQVQIW2NkAIILFy78NzAwYATRjCABZEGwAEwFiA1WBlIOUwkA72gTdDIYVO4AAAAASUVORK5CYII=) repeat;
+    padding: 60px 0px 30px 20px;
+}
+.profile-body {
+    padding: 4px 0px;
+}
+
 .text-page {
     padding: 120px 0;
 }
 
 #map-outer {
     height: 440px;
-	padding: 40px 20px;
-	margin-bottom: 20px;
-	background-color:#FFF
+    padding: 40px 20px;
+    margin-bottom: 20px;
+    background-color:#FFF
 }
 
 #map-container {
     height: 400px
+}
+
+.img-dim {
+    opacity: 0.5;
+    box-shadow: inset 0px 0px 64px 64px #EA1717, 0px 0px 4px 4px #EA1717;
 }
 
 @media all and (max-width: 768px) {

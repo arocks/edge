@@ -1,77 +1,79 @@
-# from django.shortcuts import render
 from django.views import generic
-from . import forms
-from django.shortcuts import redirect
-from django.core.urlresolvers import reverse_lazy
-from django.contrib.auth import authenticate
-from django.contrib.auth import login
-from django.contrib.auth import logout
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import logout
+from braces.views import LoginRequiredMixin
+from . import forms
 
 
-class SignInAndSignUp(generic.edit.FormMixin, generic.TemplateView):
-
-    signin_form_class = forms.LoginForm
-    signup_form_class = forms.SignupForm
+class ShowProfile(LoginRequiredMixin, generic.TemplateView):
+    template_name = "profiles/show_profile.html"
+    http_method_names = ['get']
 
     def get(self, request, *args, **kwargs):
-        if "signin_form" not in kwargs:
-            kwargs["signin_form"] = self.signin_form_class()
-        if "signup_form" not in kwargs:
-            kwargs["signup_form"] = self.signup_form_class()
+        username = self.kwargs.get('username')
+        if username:
+            user = get_object_or_404(User, username=username)
+        else:
+            user = self.request.user
+
+        if user == self.request.user:
+            kwargs["editable"] = True
+        kwargs["show_user"] = user
+        # kwargs["user_form"] = forms.UserForm(instance=user)
+        # kwargs["profile_form"] = forms.ProfileForm(instance=user.profile)
+        return super().get(request, *args, **kwargs)
+
+
+class EditProfile(LoginRequiredMixin, generic.TemplateView):
+    template_name = "profiles/edit_profile.html"
+    http_method_names = ['get', 'post']
+
+    def get(self, request, *args, **kwargs):
+        user = self.request.user
+        if "user_form" not in kwargs:
+            kwargs["user_form"] = forms.UserForm(instance=user)
+        if "profile_form" not in kwargs:
+            kwargs["profile_form"] = forms.ProfileForm(instance=user.profile)
         return super().get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        if 'sign_in' in request.POST:
-            form = self.signin_form_class(**self.get_form_kwargs())
-            if not form.is_valid():
-                messages.add_message(request,
-                                     messages.ERROR,
-                                     "Unable login! "
-                                     "Check username/password")
-                return super().get(request,
-                                   signup_form=self.signup_form_class(),
-                                   signin_form=form)
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password"]
-            user = authenticate(username=username, password=password)
-            if user is not None and user.is_active:
-                login(self.request, user)
-            else:
-                messages.add_message(request, messages.ERROR,
-                                     "Unable to find given username!")
-        if 'sign_up' in request.POST:
-            form = self.signup_form_class(**self.get_form_kwargs())
-            if not form.is_valid():
-                messages.add_message(request,
-                                     messages.ERROR,
-                                     "Unable to register! "
-                                     "Please retype the details")
-                return super().get(request,
-                                   signin_form=self.signin_form_class(),
-                                   signup_form=form)
-            form.save()
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password1"]
+        user = self.request.user
+        user_form = forms.UserForm(request.POST, instance=user)
+        profile_form = forms.ProfileForm(request.POST,
+                                         request.FILES,
+                                         instance=user.profile)
+        if not (user_form.is_valid() and profile_form.is_valid()):
             messages.add_message(request,
-                                 messages.INFO,
-                                 "{0} added sucessfully".format(
-                                     username))
-            # Login automatically
-            user = authenticate(username=username, password=password)
-            login(self.request, user)
-        return redirect("home")
+                                 messages.ERROR,
+                                 "There was a problem with the form",
+                                 "Please check the entered details")
+            user_form = forms.UserForm(instance=user)
+            profile_form = forms.ProfileForm(instance=user.profile)
+            return super().get(request,
+                               user_form=user_form,
+                               profile_form=profile_form)
+        # Both forms are fine. Time to save!
+        user_form.save()
+        profile = profile_form.save(commit=False)
+        profile.user = user
+        profile.save()
+        messages.add_message(request,
+                             messages.INFO,
+                             "Profile details saved!")
+        return redirect("profiles:show_self")
 
 
-class LogoutView(generic.RedirectView):
-    url = reverse_lazy("home")
+class DeleteProfile(LoginRequiredMixin, generic.TemplateView):
+    template_name = "profiles/delete_profile.html"
+    http_method_names = ['get', 'post']
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
+        user = self.request.user
+        username = user.username
         logout(request)
-        messages.add_message(request, messages.INFO,
-                             "Logout successful!")
-        return super().get(request, *args, **kwargs)
-
-
-class AboutView(generic.TemplateView):
-    template_name = "about.html"
+        user.delete()
+        messages.add_message(request, messages.WARNING,
+                             "Deleted User: {}!".format(username))
+        return redirect("home")

@@ -11,7 +11,8 @@ class BaseProfile(models.Model):
                                 upload_to='profile_pics/%Y-%m-%d/',
                                 null=True,
                                 blank=True)
-    homepage = models.URLField("Personal homepage", blank=True, null=True)
+    bio = models.CharField("Short Bio", max_length=200, blank=True, null=True)
+    email_verified = models.BooleanField("Email verified", default=False)
 
     class Meta:
         abstract = True

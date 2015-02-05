@@ -1,0 +1,39 @@
+{% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load staticfiles {% templatetag closeblock %}
+{% templatetag openblock %} load crispy_forms_tags {% templatetag closeblock %}
+{% templatetag openblock %} load thumbnail {% templatetag closeblock %}
+
+{% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openvariable %} block.super {% templatetag closevariable %}Profile{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+<!-- Benefits of the Django application -->
+{% templatetag openblock %} block container {% templatetag closeblock %}
+
+<div class="container">
+  <h1 class="text-primary">Deleting Your Entire Account!</h1>
+  <hr>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-3">
+      <div class="text-center">
+        <img title="profile picture" class="img-circle img-responsive img-dim" src="{% templatetag openblock %} thumbnail user.profile.picture|default:'default_profile.jpg' 140x140 crop {% templatetag closeblock %}">
+      </div>
+    </div>
+      
+    <!-- edit form column -->
+    <div class="col-md-9">
+      <p class="lead">You are about delete your own user account <strong>{% templatetag openvariable %} user.get_full_name {% templatetag closevariable %}</strong> and everything you have on this site. This includes: </p>
+      <ul>
+	<li>Your profile details</li>
+	<li>Your... stuff</li>
+      </ul>
+      <p>Are you really, really sure that you want to permanantly remove yourself from this site? <strong>You cannot undo this!</strong></p>
+      <form method="post">
+	{% templatetag openblock %} csrf_token {% templatetag closeblock %}
+	<button class="btn btn-danger type="submit">Confirm Deletion</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% templatetag openblock %} endblock {% templatetag closeblock %}
+
