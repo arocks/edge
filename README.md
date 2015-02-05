@@ -1,14 +1,17 @@
     {% comment "This blockquote will be deleted" %}
+ 
+#edge - a lighter, cutting-edge Django project skeleton.
 
-> 
-> __edge__ - a lighter, cutting-edge Django project skeleton.
->
-> FEATURES: Python 3/Django 1.7 support, Bootstrap bundled, No South
->
-> Quick start:
-> `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env myproj`
->
-> More information at: https://github.com/arocks/edge/wiki
+FEATURES: Python 3/Django 1.7 support, Bootstrap bundled, User Registration and Sign up
+
+## Quick start:
+
+    $ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env myproj
+
+More information at: https://github.com/arocks/edge/wiki
+
+
+
 
     {% endcomment %}
 # {{ project_name }}
