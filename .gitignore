@@ -54,3 +54,11 @@ tramp
 # Windows
 Thumbs.db
 Desktop.ini
+
+# Vagrant private files
+.vagrant/*
+
+# Supervisor files
+supervisord.log
+supervisord.pid
+supervisord.conf
