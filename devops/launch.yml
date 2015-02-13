@@ -57,6 +57,14 @@
       sudo: yes
       sudo_user: root
 
+    - name: source virtualenv
+      lineinfile: line="source {{APP_VIRTUALENV}}/bin/activate"
+                  backup=yes
+                  dest=~/.profile
+      when: APP_ENVIRONMENT == "development"
+      sudo: yes
+      sudo_user: "{{ansible_ssh_user}}"
+
   handlers:
 
     - name: restart app

@@ -14,7 +14,9 @@ import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
-TEMPLATE_DIRS = os.path.join(BASE_DIR, 'templates')
+TEMPLATE_DIRS = ( #must be a tuple
+    os.path.join(BASE_DIR, 'templates'),
+    )
 STATIC_URL = '/static/'
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -86,10 +88,10 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
-# Django Debug Toolbar
-if DEBUG:
-    INSTALLED_APPS += (
-        'debug_toolbar.apps.DebugToolbarConfig',)
+# # Django Debug Toolbar
+# if DEBUG:
+#     INSTALLED_APPS += (
+#         'debug_toolbar.apps.DebugToolbarConfig',)
 
 # Turn off debug while imported by Celery with a workaround
 # See http://stackoverflow.com/a/4806384
