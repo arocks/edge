@@ -13,11 +13,15 @@ import sys
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = (#must be a tuple
+    os.path.join(BASE_DIR, 'edge_static'),
+    )
 TEMPLATE_DIRS = ( #must be a tuple
     os.path.join(BASE_DIR, 'templates'),
     )
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # STATIC_URL = '/static/'

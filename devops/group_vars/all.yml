@@ -1,5 +1,5 @@
 ---
-APP_ENVIRONMENT: development
+
 APP_NAME: edge
 APP_REPOSITORY: git@github.com:komuW/edge.git
 APP_USER: "{{ ansible_ssh_user }}"
