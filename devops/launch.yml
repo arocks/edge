@@ -1,0 +1,82 @@
+---
+- hosts: app_servers
+  gather_facts: yes
+  sudo: no
+
+  tasks:
+
+    - name: Check out code on app server
+      git: >
+        repo={{ APP_REPOSITORY }} 
+        dest={{ APP_DIR }} 
+        version={{ APP_VERSION }}
+        accept_hostkey=yes
+      when: APP_ENVIRONMENT != "development"
+      notify: restart app
+
+    - name: Ensure runtime directories
+      file: path={{ APP_DIR }}/{{ item }} state=directory
+      with_items:
+        - log
+
+    - name: Install application requirements
+      # bug: set sudo to yes
+      pip: >
+        requirements={{ APP_DIR }}/requirements/{{ APP_ENVIRONMENT }}.txt
+        virtualenv={{ APP_VIRTUALENV }}
+      sudo: yes 
+
+    - name: Sync and migrate DB
+      django_manage: >
+        app_path={{ APP_DIR }} 
+        virtualenv={{ APP_VIRTUALENV }}
+        settings=settings.{{ APP_ENVIRONMENT }}
+        command={{ item }}
+      with_items:
+        - validate
+        - collectstatic
+        - migrate
+
+    - name: Configure supervisord
+      template: src=templates/supervisord.app.conf.j2 
+                dest={{ APP_DIR }}/supervisord.conf
+      notify: 
+        - restart supervisord
+
+    - name: Kill all supervisord
+      command: killall supervisord
+      ignore_errors: yes
+      sudo: yes
+      sudo_user: root
+
+    - name: Wait for supervisor to clean up and exit
+      pause: seconds=5
+
+    - name: Start supervisord
+      command: supervisord -c {{ APP_DIR }}/supervisord.conf
+      sudo: yes
+      sudo_user: root
+
+    - name: source virtualenv
+      lineinfile: line="source {{APP_VIRTUALENV}}/bin/activate"
+                  backup=yes
+                  dest=~/.profile
+      when: APP_ENVIRONMENT == "development"
+      sudo: yes
+      sudo_user: "{{ansible_ssh_user}}"
+
+  handlers:
+
+    - name: restart app
+      command: supervisorctl restart {{ APP_NAME }}:*
+      sudo: yes
+      sudo_user: root
+      tags:
+        - restart
+
+    - name: restart supervisord
+      service: name=supervisor state=restarted enabled=yes
+      sudo: yes
+      sudo_user: root
+      tags:
+        - restart_supervisor

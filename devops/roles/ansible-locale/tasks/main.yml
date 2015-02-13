@@ -1,0 +1,9 @@
+---
+# tasks file for locale
+- name: set locale.gen file
+  locale_gen: name={{locale_lang}} state=present
+  when: ansible_os_family == "Debian"
+
+- name: set locale to en_US.UTF-8
+  template: src=default.j2 dest=/etc/default/locale
+  when: ansible_os_family == "Debian"

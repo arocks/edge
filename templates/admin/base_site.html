@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+{% load i18n %}{% load admin_static bootstrapped_goodies_tags %}
+
+{% block title %}{% include "_brandname.html" %} Admin{% endblock %}
+
+{% block branding %}
+  <a class="navbar-brand" href="{% url 'admin:index' %}">{% include "_brandname.html" %} Admin</a>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block extrahead %}{{ block.super }}
+  <link href="{% static 'site/css/main.css' %}" rel="stylesheet">
+{% endblock %}
+

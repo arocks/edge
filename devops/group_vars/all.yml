@@ -1,0 +1,13 @@
+---
+
+APP_NAME: edge
+APP_REPOSITORY: git@github.com:komuW/edge.git
+APP_USER: "{{ ansible_ssh_user }}"
+
+APP_HOME: "/home/{{ APP_USER }}"
+APP_DIR: "{{ APP_HOME }}/{{ APP_NAME }}"
+APP_VIRTUALENV: "{{ APP_HOME }}/.virtualenvs/{{ APP_NAME }}"
+
+APP_VERSION: develop
+
+GUNICORN_PORT: 8000

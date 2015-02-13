@@ -1,0 +1,35 @@
+# {{ ansible_managed }}
+LANG="{{ locale_lang }}"
+{% if locale_all is defined %}
+LC_ALL="{{ locale_all }}"
+{% endif %}
+{% if locale_language is defined %}
+LANGUAGE="{{ locale_language }}"
+{% endif %}
+{% if locale_numeric is defined %}
+LC_NUMERIC="{{ locale_numeric }}"
+{% endif %}
+{% if locale_time is defined %}
+LC_TIME="{{ locale_time }}"
+{% endif %}
+{% if locale_monetary is defined %}
+LC_MONETARY="{{ locale_monetary }}"
+{% endif %}
+{% if locale_paper is defined %}
+LC_PAPER="{{ locale_paper }}"
+{% endif %}
+{% if locale_identification is defined %}
+LC_IDENTIFICATION="{{ locale_identification }}"
+{% endif %}
+{% if locale_name is defined %}
+LC_NAME="{{ locale_name }}"
+{% endif %}
+{% if locale_address is defined %}
+LC_ADDRESS="{{ locale_address }}"
+{% endif %}
+{% if locale_telephone is defined %}
+LC_TELEPHONE="{{ locale_telephone }}"
+{% endif %}
+{% if locale_measurement is defined %}
+LC_MEASUREMENT="{{ locale_measurement }}"
+{% endif %}

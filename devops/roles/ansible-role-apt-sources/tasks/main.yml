@@ -1,0 +1,15 @@
+---
+# tasks file for apt_sources
+#
+- name: Update package cache if older than 8hrs
+  apt: update_cache=yes cache_valid_time={{ 60 * 60 * 8 }}
+
+- name: configure main apt sources.list
+  action:
+    module:     template
+    src:        sources.list.j2
+    dest:       '{{ apt_sources_path }}'
+    backup:     yes
+  notify:
+  - apt-update-cache
+

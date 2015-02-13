@@ -48,3 +48,13 @@ Take a look at the docs for a detailed instructions guide.
 
 [0]: https://www.python.org/
 [1]: https://www.djangoproject.com/
+
+
+## Setup Using Vagrant
+* You will need to have [vagrant](https://www.vagrantup.com/), [virtualbox](https://www.virtualbox.org/) and [ansible](www.ansible.com/) installed. 
+* change into this projects directory and:        
+`vagrant up`         
+* point your browser to; [localhost:8050](http://localhost:8050/)
+
+## python 2.X compatibility
+[This fork](https://github.com/komuW/edge) works with python 2.7

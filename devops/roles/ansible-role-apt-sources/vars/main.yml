@@ -1,0 +1,261 @@
+---
+# vars file for apt_sources
+
+# some logic constructs
+apt_sources_real_cc: "{% if apt_sources_cc in apt_sources_country_codes.keys() %}{{ apt_sources_cc + '.' }}{% else %}{% endif%}"
+
+apt_sources_release:
+        # ubuntu
+        warty:
+            version:    4.10
+            supported:  false
+        hoary:
+            version:    5.04
+            supported:  false
+        breezy:
+            version:    5.10
+            supported:  false
+        dapper:
+            version:    6.06
+            supported:  false
+        edgy:
+            version:    6.10
+            supported:  false
+        feisty:
+            version:    7.04
+            supported:  false
+        gutsy:
+            version:    7.10
+            supported:  false
+        hardy:
+            version:    8.04
+            supported:  false
+        intrepid:
+            version:    8.10
+            supported:  false
+        jaunty:
+            version:    9.04
+            supported:  false
+        karmic:
+            version:    9.10
+            supported:  false
+        lucid:
+            version:    10.04
+            supported:  true
+        maverick:
+            version:    10.10
+            supported:  false
+        natty:
+            version:    11.04
+            supported:  false
+        oneiric:
+            version:    11.10
+            supported:  false
+        precise:
+            version:    12.04
+            supported:  true
+        quantal:
+            version:    12.10
+            supported:  true
+        raring:
+            version:    13.04
+            supported:  true
+        saucy:
+            version:    13.10
+            supported:  true
+        trusty:
+            version:    14.04
+            supported:  true
+        # debian
+        buzz:
+            version:    1.1
+            supported:  false
+        rex:
+            version:    1.2
+            supported:  false
+        bo:
+            version:    1.3
+            supported:  false
+        hamm:
+            version:    2.0
+            supported:  false
+        slink:
+            version:    2.1
+            supported:  false
+        potato:
+            version:    2.2
+            supported:  false
+        woody:
+            version:    3.0
+            supported:  false
+        sarge:
+            version:    3.1
+            supported:  false
+        etch:
+            version:    4.0
+            supported:  false
+        lenny:
+            version:    5.0
+            supported:  false
+        squeeze:
+            version:    6.0
+            supported:  true
+        wheezy:
+            version:    7.0
+            supported:  true
+        jessie:
+            supported:  true
+
+apt_sources_country_codes:
+        ac: Aceh
+        al: Albania
+        dz: Algeria
+        ar: Argentina
+        am: Armenia
+        ab: Auburn
+        au: Australia
+        at: Austria
+        az: Azerbaj
+        bs: Bahamas
+        bh: Bahrain
+        bn: Bangladesh
+        bb: Barbados
+        by: Belarus
+        be: Belgium
+        bj: Benin
+        bu: Bhutan
+        bo: Bolivia
+        ba: Bosnia and Herzegovina
+        67: Botswana
+        br: Brazil
+        bg: Bulgaria
+        bf: Burkina Fasso
+        kh: Cambodia
+        cm: Cameroon
+        ca: Canada
+        cl: Chile
+        cn: China
+        co: Colombia
+        cr: Costa Rica
+        ci: Côte d\'Ivoire
+        hr: Croatia
+        cu: Cuba
+        cy: Cyprus
+        cz: Czech Republic
+        cd: Democratic Republic of Congo
+        dk: Denmark
+        dj: Djibouti
+        dr: Dominican Republic
+        ec: Ecuador
+        eg: Egypt
+        sv: El Salvador
+        en: England
+        er: Eritrea
+        ee: Estonia
+        et: Ethiopia
+        fi: Finland
+        fr: France
+        fp: French Polynesia
+        ge: Georgia
+        de: Germany
+        gh: Ghana
+        gb: Great britain
+        gr: Greece
+        39: Greenland
+        gd: Grenada
+        gt: Guatemala
+        hn: Honduras
+        hk: Hong kong
+        hu: Hungary
+        is: Iceland
+        in: India
+        id: Indonesia
+        ir: Iran
+        iq: Iraq
+        ie: Ireland
+        il: Israel
+        it: Italy
+        ja: Jamaica
+        jp: Japan
+        jo: Jordan
+        kz: Kazakhstan
+        ke: Kenya
+        kw: Kuwait
+        kg: Kyrgyzstan
+        lv: Latvia
+        lb: Lebanon
+        lt: Lithuania
+        lu: Luxembourg
+        mk: Macedonia
+        mg: Madagascar
+        mw: Malawi
+        my: Malaysia
+        mu: Mauritius
+        mx: Mexico
+        md: Moldova
+        mn: Mongolia
+        ma: Morocco
+        mz: Mozambique
+        np: Nepal
+        nl: Netherlands
+        nc: New Caledonia
+        nz: New Zealand
+        ni: Nicaragua
+        ne: Niger
+        ng: Nigeria
+        no: Norway
+        om: Oman
+        pk: Pakistan
+        ps: Palestine
+        pa: Panama
+        pg: Papua new gunia
+        py: Paraguay
+        pe: Peru
+        ph: Philippines
+        pl: Poland
+        pt: Portugal
+        qa: Qatar
+        re: Reunion
+        ro: Romania
+        ru: Russia
+        rw: Rwanda
+        sn: S?n?gal
+        sa: Saudi Arabia
+        ka: Scotland
+        rs: Serbia
+        sc: Seychelles
+        sg: Singapore
+        sk: Slovakia
+        sl: Slovenia
+        za: South Africa
+        kr: South korea
+        21: South sudan
+        es: Spain
+        lk: Sri Lanka
+        sd: Sudan
+        sr: Suriname
+        se: Sweden
+        ch: Switzerland
+        sy: Syria
+        tw: Taiwan
+        th: Thailand
+        tl: Timor-Leste
+        tg: Togo
+        to: Tonga
+        tt: Trinidad & Tobago
+        tn: Tunisia
+        tr: Turkey
+        ug: Uganda
+        ua: Ukraine
+        ae: United Arab Emirates
+        uk: United Kingdom
+        us: United States
+        uy: Uruguay
+        02: USA
+        uz: Uzbekistan
+        ve: Venezuela
+        vn: Vietnam
+        ye: Yemen
+        zm: Zambia
+        zw: Zimbabwe
+

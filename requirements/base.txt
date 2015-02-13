@@ -1,0 +1,7 @@
+Django==1.7.4
+django-environ==0.3.0
+django-braces==1.4.0
+django-crispy-forms==1.4.0
+django-admin-bootstrapped==2.3.3
+
+gunicorn==19.2.1

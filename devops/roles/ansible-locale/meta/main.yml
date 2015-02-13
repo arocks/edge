@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Sergey Korolev
+  description: Set locales in Debian-like systems.
+  license: MIT
+  min_ansible_version: 1.2
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  categories:
+  - system
+dependencies: []
+  

@@ -1,0 +1,30 @@
+[supervisord]
+directory={{ APP_DIR }}
+stdout_logfile={{ APP_DIR }}/log/%(program_name)s.log
+stderr_logfile={{ APP_DIR }}/log/%(program_name)s.log
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
+
+[inet_http_server]         ; inet (TCP) server disabled by default
+port=127.0.0.1:9012        ; (ip_address:port specifier, *:port for all iface)
+
+[supervisorctl]
+serverurl=http://127.0.0.1:9012 ; use an http:// url to specify an inet socket
+
+[group:{{ APP_NAME }}]
+programs=gunicorn
+
+[program:gunicorn]
+user={{ APP_USER }}
+directory={{ APP_DIR }}
+environment=DJANGO_SETTINGS_MODULE="settings.{{ APP_ENVIRONMENT }}"
+command=authbind {{ APP_VIRTUALENV }}/bin/gunicorn settings.wsgi:application
+    --workers=4
+    --bind="0.0.0.0:{{ GUNICORN_PORT }}"
+     --access-logfile {{ APP_DIR }}/log/%(program_name)s_access.log
+stdout_logfile={{ APP_DIR }}/log/%(program_name)s.log
+stderr_logfile={{ APP_DIR }}/log/%(program_name)s.log
+autorestart=true
+stopasgroup=true
+startsecs=5
