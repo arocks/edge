@@ -12,12 +12,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.forward_agent = true
   config.vm.synced_folder './devops', '/vagrant/devops', 
       :mount_options => ['fmode=666']
-  #config.vm.provision :shell, :path => "devops/boot.sh"
   
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "devops/start.yml"
-    #ansible.verbose = "v" #vvv
-  end
+  config.vm.provision :shell, :path => "devops/boot.sh"
 
   # Cache apt-get package downloads to speed things up
   if Vagrant.has_plugin?("vagrant-cachier")

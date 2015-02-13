@@ -1,6 +1,6 @@
 ---
-- hosts: all
-  gather_facts: no
+- hosts: app_servers
+  gather_facts: yes
   sudo: no
 
   tasks:

@@ -1,5 +1,4 @@
 -r base.txt
 
 pudb==2014.1
-django-debug-toolbar
 django-extensions

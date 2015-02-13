@@ -1,3 +1,12 @@
+# deployment
+env=development
+
+configure:
+	@ansible-playbook devops/start.yml -i devops/inventory/$(env) --limit=all
+
+deploy:
+	@ansible-playbook devops/launch.yml -i devops/inventory/$(env) --limit=all -vvvvvvv
+
 # for dev debugging.
 run2:
 	@sudo killall -9 supervisord | echo 
