@@ -3,4 +3,4 @@
 
 - { hosts: all, sudo: yes, roles: [ ansible-locale ], tags: [ locale ] }
 
-- { hosts: app_servers, sudo: yes, roles: [ app_server ], tags: [ app_server ]}
+- { hosts: all, sudo: yes, roles: [ app_server ], tags: [ app_server ]}
