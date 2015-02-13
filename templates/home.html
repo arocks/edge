@@ -1,38 +1,38 @@
-{% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
+{% extends "base.html" %}
 
-{% templatetag openblock %} load staticfiles {% templatetag closeblock %}
-{% templatetag openblock %} load crispy_forms_tags {% templatetag closeblock %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
 
-{% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openvariable %} block.super {% templatetag closevariable %}Home{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% block title %}{{ block.super }}Home{% endblock %}
 
-{% templatetag openblock %} block navbar-left {% templatetag closeblock %}
-  {% templatetag openblock %} include "_navbar.html" with active_link="home" {% templatetag closeblock %}
-{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="home" %}
+{% endblock %}
 
-{% templatetag openblock %} block navbar-right {% templatetag closeblock %}
-  {% templatetag openblock %} if not user.is_authenticated {% templatetag closeblock %}
-    {% templatetag openblock %} crispy signin_form {% templatetag closeblock %}
-  {% templatetag openblock %} else {% templatetag closeblock %}
-    {% templatetag openvariable %} block.super {% templatetag closevariable %}
-  {% templatetag openblock %} endif {% templatetag closeblock %}
-{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% block navbar-right %}
+  {% if not user.is_authenticated %}
+    {% crispy signin_form %}
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
 
-{% templatetag openblock %} block container {% templatetag closeblock %}
+{% block container %}
   <div class="jumbotron jumbotron-carousel corporate-jumbo">
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-sm-8">
-          <h1>{% templatetag openblock %} include "_brandname.html" {% templatetag closeblock %}</h1>
+          <h1>{% include "_brandname.html" %}</h1>
           <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet!</p>
         </div>
         <div class="col-md-4 col-sm-4">
 
-          {% templatetag openblock %} if not user.is_authenticated {% templatetag closeblock %}
+          {% if not user.is_authenticated %}
             <div class="span3 well">
               <legend>Create an Account</legend>
-              {% templatetag openblock %} crispy signup_form {% templatetag closeblock %}
+              {% crispy signup_form %}
             </div>
-          {% templatetag openblock %} endif {% templatetag closeblock %}
+          {% endif %}
 
         </div>
       </div>
@@ -62,5 +62,5 @@
   </div>
 </div>
 
-{% templatetag openblock %} endblock container {% templatetag closeblock %}
+{% endblock container %}
 
