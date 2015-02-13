@@ -8,7 +8,7 @@ from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 class LoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(LoginForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_class = 'form-inline navbar-form pull-right'
         self.helper.form_id = 'signin-form'
@@ -24,7 +24,7 @@ class LoginForm(AuthenticationForm):
 class SignupForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(SignupForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_id = 'signup-form'
         #self.helper.form_class = 'form-inline navbar-form pull-right'
