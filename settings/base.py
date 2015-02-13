@@ -22,12 +22,11 @@ TEMPLATE_DIRS = ( #must be a tuple
     )
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# STATIC_URL = '/static/'
-# MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# its also preffered to store SECRET_KEY as an environment variable
 SECRET_KEY = 'CIA-level-supa-secret-LOL'
 
 # SECURITY WARNING: don't run with debug turned on in production!
