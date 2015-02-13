@@ -1,0 +1,7 @@
+---
+# handlers file for apt_sources
+#
+- name: apt-update-cache
+  action: 
+      module:       apt
+      update_cache: yes

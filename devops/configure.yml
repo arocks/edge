@@ -1,0 +1,6 @@
+---
+- {hosts: all, sudo: yes, roles: [ ansible-role-apt-sources ], tags: [apt_sources] }
+
+- { hosts: all, sudo: yes, roles: [ ansible-locale ], tags: [ locale ] }
+
+- { hosts: app_servers, sudo: yes, roles: [ app_server ], tags: [ app_server ]}

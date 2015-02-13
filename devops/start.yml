@@ -1,0 +1,4 @@
+---
+
+- include: configure.yml
+- include: launch.yml

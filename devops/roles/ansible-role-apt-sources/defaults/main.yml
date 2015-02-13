@@ -1,0 +1,90 @@
+---
+# defaults file for apt_sources
+#
+## main sources list location
+apt_sources_dir:  /etc/apt/
+apt_sources_file: sources.list
+apt_sources_path: '{{ apt_sources_dir + apt_sources_file }}'
+
+## country code
+# empty default points to main archive
+apt_sources_cc: ''
+
+## setting for using binary and source repositories
+# deb-src item could be left out
+apt_sources_types:
+    - deb
+    - deb-src
+
+## description for source url generation
+# dists are added with a hyphen to release codename, e.g. trusty-backports
+# path is added next to release codename, e.g. squeeze/updates
+apt_sources_source:
+        Ubuntu:
+            sections:
+                    - 'main'
+                    - 'universe'
+                    - 'restricted'
+                    - 'multiverse'
+            # supported
+            True:
+                current:
+                    url:    "{{ apt_sources_real_cc + 'archive.ubuntu.com/ubuntu' }}"
+                    path:   ""
+                    dists:
+                            - ''
+                            - 'updates'
+                            - 'backports'
+                            - 'proposed'
+                security:
+                    url:    'security.ubuntu.com/ubuntu'
+                    path:   ''
+                    dists:
+                            - 'security'
+            # supported
+            False:
+                archived:
+                    url:    'old-releases.ubuntu.com/ubuntu'
+                    path:   ''
+                    dists:
+                            - ''
+                            - 'updates'
+                            - 'security'
+                            - 'backports'
+                            - 'proposed'
+        Debian:
+            sections:
+                    - 'main'
+                    - 'contrib'
+                    - 'non-free'
+            # supported
+            True:
+                current:
+                    url:    'ftp.{{ apt_sources_real_cc }}debian.org/debian'
+                    path:   ''
+                    dists:
+                            - ''
+                            - 'updates'
+                            - 'proposed-updates'
+                            #- 'backports'
+                security:
+                    url:    'security.debian.org'
+                    path:   '/updates'
+                    dists:
+                            - ''
+            # supported
+            False:
+                archived:
+                    url:    'archive.debian.org/debian'
+                    path:   '/updates'
+                    path:   ''
+                    dists:
+                            - 'updates'
+                            - 'proposed-updates'
+                            #- 'backports'
+                security:
+                    url:    'archive.debian.org/debian-archive'
+                    path:   ''
+                    dists:
+                            - 'debian-security'
+

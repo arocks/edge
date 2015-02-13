@@ -1,0 +1,47 @@
+---
+# tasks file for app_server
+
+- name: Install system packages
+  apt: pkg={{ item }} state=present
+  with_items:
+    - build-essential
+    - python-dev
+    - python-setuptools
+    - python-pip
+    - authbind
+    - supervisor
+    - monit
+    - git
+    - gcc
+    - ntp
+    - screen
+
+- name: Start ntp service
+  service: name=ntp enabled=yes state=started
+
+- name: Ensure pip is up-to-date
+  command: pip install --upgrade pip
+
+- name: Install Python packages
+  pip: name={{ item }}
+  with_items: 
+    - virtualenv
+    - virtualenvwrapper
+
+- name: Build dependencies for Python Postgres adapter
+  command: sudo apt-get -y build-dep python-psycopg2
+
+- name: Allow app to bind to port 80
+  file: path=/etc/authbind/byport/80 state=touch
+        owner={{ APP_USER }} group={{ APP_USER }} mode=755
+
+- name: Write supervisord.conf
+  template: dest=/etc/supervisor/supervisord.conf
+            src=supervisord.conf.j2
+            backup=yes 
+
+- name: Link to app-specific supervisor configuration
+  file: >
+    src={{ APP_DIR }}/supervisord.conf
+    dest=/etc/supervisor/conf.d/{{ APP_NAME }}.conf
+    state=link force=yes

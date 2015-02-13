@@ -1,0 +1,29 @@
+# {{ ansible_managed }}
+{# check release code name #}
+{% if ansible_distribution_release == 'NA' or ansible_distribution_release == '' %}
+{% set RELEASE = ansible_lsb.codename %}
+{% else %}
+{% set RELEASE = ansible_distribution_release %}
+{% endif %}
+# Ansible sources.list file generated for {{ ansible_distribution + ' release ' + 
+  ansible_distribution_version + ' (' + RELEASE + ')' }}
+{# check which sources to use #}
+{% set SUPPORTED = apt_sources_release[RELEASE].supported %}
+{% if SUPPORTED %}
+# This release is a supported release.
+{% else %}
+# This release is not supported anymore.
+{% endif %}
+#
+{% for source in apt_sources_source[ansible_distribution][SUPPORTED].keys() %}
+## {{ source }} repositories:
+{% for dist in apt_sources_source[ansible_distribution][SUPPORTED][source].dists %}
+{% for deb in apt_sources_types %}
+{{ deb + ' http://' + apt_sources_source[ansible_distribution][SUPPORTED][source].url + ' ' + RELEASE }}{% if dist != '' %}{{ '-' + dist }}{% endif %}{{ apt_sources_source[ansible_distribution][SUPPORTED][source].path + ' ' }}{% 
+for section in apt_sources_source[ansible_distribution][SUPPORTED][source].sections | default(apt_sources_source[ansible_distribution].sections) %}{{ section }}{% if not loop.last %}{{ ' ' }}{% endif %}{% endfor %}
+
+{% endfor %}
+#
+{% endfor %}
+{% endfor %}
+

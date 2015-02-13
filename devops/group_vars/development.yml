@@ -1,0 +1,5 @@
+---
+APP_ENVIRONMENT: development
+APP_DIR: /vagrant
+APP_VERSION: develop
+
