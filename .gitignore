@@ -62,3 +62,6 @@ Desktop.ini
 supervisord.log
 supervisord.pid
 supervisord.conf
+
+# Static files in developement/local environment
+static/
