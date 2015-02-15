@@ -62,7 +62,7 @@
                 {% templatetag openblock %} endif {% templatetag closeblock %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle profile-menu" data-toggle="dropdown">
-			<img src="{% templatetag openblock %} thumbnail user.profile.picture|default:'default_profile.jpg' 30x30 crop {% templatetag closeblock %}" alt="" />
+			<img src="{% templatetag openblock %} thumbnail user.profile.picture|default:'default_profile.png' 30x30 crop {% templatetag closeblock %}" alt="" />
 			{% templatetag openvariable %} user.get_full_name|truncatechars:20 {% templatetag closevariable %}
 			<span class="caret"></span>
 		    </a>

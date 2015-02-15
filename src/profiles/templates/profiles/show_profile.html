@@ -15,7 +15,7 @@
       <a href="{% templatetag openblock %} url 'profiles:edit_self' {% templatetag closeblock %}" class="btn btn-info">Edit Profile</a>
       {% templatetag openblock %} endif {% templatetag closeblock %}
     </div>
-    <div class="col-sm-2"><img title="profile picture" class="img-circle img-responsive" src="{% templatetag openblock %} thumbnail show_user.profile.picture|default:'default_profile.jpg' 140x140 crop {% templatetag closeblock %}">
+    <div class="col-sm-2"><img title="profile picture" class="img-circle img-responsive" src="{% templatetag openblock %} thumbnail show_user.profile.picture|default:'default_profile.png' 140x140 crop {% templatetag closeblock %}">
     </div>
   </div>
 </div>

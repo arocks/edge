@@ -1,8 +1,4 @@
-Django>=1.7
-django-environ>=0.3.0
-django-braces>=1.4.0
-django-crispy-forms>=1.4.0
-django-admin-bootstrapped>=1.6.9
-django-debug-toolbar>=1.2.1
-easy_thumbnails
-pathlib; python_version < '3.4'
+-r requirements/development.txt
+
+# Extra stuff required for local dev
+pudb==2014.1

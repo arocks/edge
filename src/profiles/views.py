@@ -1,9 +1,9 @@
 from django.views import generic
 from django.shortcuts import get_object_or_404, redirect
-from django.contrib.auth.models import User
 from django.contrib import messages
 from braces.views import LoginRequiredMixin
 from . import forms
+from . import models
 
 
 class ShowProfile(LoginRequiredMixin, generic.TemplateView):
@@ -11,17 +11,16 @@ class ShowProfile(LoginRequiredMixin, generic.TemplateView):
     http_method_names = ['get']
 
     def get(self, request, *args, **kwargs):
-        username = self.kwargs.get('username')
-        if username:
-            user = get_object_or_404(User, username=username)
+        slug = self.kwargs.get('slug')
+        if slug:
+            profile = get_object_or_404(models.Profile, slug=slug)
+            user = profile.user
         else:
             user = self.request.user
 
         if user == self.request.user:
             kwargs["editable"] = True
         kwargs["show_user"] = user
-        # kwargs["user_form"] = forms.UserForm(instance=user)
-        # kwargs["profile_form"] = forms.ProfileForm(instance=user.profile)
         return super(ShowProfile, self).get(request, *args, **kwargs)
 
 

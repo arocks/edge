@@ -8,23 +8,23 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 from django.core.urlresolvers import reverse_lazy
+from os.path import dirname, join, exists
 
-# Build paths inside the project like this: BASE_DIR / "directory"
-from pathlib import Path
-BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIRS = [str(BASE_DIR / 'templates'), ]
-STATICFILES_DIRS = [str(BASE_DIR / 'static'), ]
-
-MEDIA_ROOT = str(BASE_DIR / 'media')
+# Build paths inside the project like this: join(BASE_DIR, "directory")
+BASE_DIR = dirname(dirname(dirname(__file__)))
+TEMPLATE_DIRS = [join(BASE_DIR, 'templates')]
+STATICFILES_DIRS = [join(BASE_DIR, 'static')]
+MEDIA_ROOT = join(BASE_DIR, 'media')
 MEDIA_URL = "/media/"
 
 # Use 12factor inspired environment variables or from a file
 import environ
 env = environ.Env()
+
 # Ideally move env file should be outside the git repo
 # i.e. BASE_DIR.parent.parent
-env_file = BASE_DIR.parent / 'local.env'
-if env_file.is_file():
+env_file = join(dirname(__file__), 'local.env')
+if exists(env_file):
     environ.Env.read_env(str(env_file))
 
 # Quick-start development settings - unsuitable for production
@@ -34,18 +34,7 @@ if env_file.is_file():
 # Raises ImproperlyConfigured exception if SECRET_KEY not in os.environ
 SECRET_KEY = env('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
-
-# Turn off debug while imported by Celery with a workaround
-# See http://stackoverflow.com/a/4806384
-import sys
-if "celery" in sys.argv[0]:
-    DEBUG = False
 
 # Application definition
 
@@ -108,6 +97,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+ALLOWED_HOSTS = []
+
 # Crispy Form Theme - Bootstrap 3
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
@@ -117,16 +108,9 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
-# Django Debug Toolbar
-if DEBUG:
-    INSTALLED_APPS += (
-        'debug_toolbar.apps.DebugToolbarConfig',)
-
 # Authentication Settings
 AUTH_USER_MODEL = 'authtools.User'
 LOGIN_REDIRECT_URL = reverse_lazy("profiles:show_self")
 LOGIN_URL = reverse_lazy("accounts:login")
 
-# Show emails to console in DEBUG mode
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+THUMBNAIL_EXTENSION = 'png'     # Or any extn for your thumbnails
