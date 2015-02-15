@@ -5,3 +5,4 @@ django-crispy-forms>=1.4.0
 django-admin-bootstrapped>=1.6.9
 django-debug-toolbar>=1.2.1
 easy_thumbnails
+pathlib; python_version < '3.4'

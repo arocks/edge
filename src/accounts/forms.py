@@ -4,7 +4,7 @@ from django.conf import settings
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
 from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
-from authtools.forms import UserCreationForm, FriendlyPasswordResetForm
+from authtools import forms as authtoolsforms
 from django.contrib.auth import forms as authforms
 from django.core.urlresolvers import reverse
 
@@ -13,7 +13,7 @@ class LoginForm(AuthenticationForm):
     remember_me = forms.BooleanField(required=False, initial=False)
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(LoginForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         # self.helper.form_class = 'form-signin'
         self.helper.layout = Layout(
@@ -27,7 +27,7 @@ class LoginForm(AuthenticationForm):
             )
 
     def confirm_login_allowed(self, user):
-        super().confirm_login_allowed(user)
+        super(LoginForm, self).confirm_login_allowed(user)
         remember_me = self.cleaned_data.get('remember_me')
         if remember_me is True:
             ONE_MONTH = 30*24*60*60
@@ -35,10 +35,10 @@ class LoginForm(AuthenticationForm):
             self.request.session.set_expiry(expiry)
 
 
-class SignupForm(UserCreationForm):
+class SignupForm(authtoolsforms.UserCreationForm):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(SignupForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         # self.helper.form_class = 'form-signin'
         self.helper.layout = Layout(
@@ -53,7 +53,7 @@ class SignupForm(UserCreationForm):
 class PasswordChangeForm(authforms.PasswordChangeForm):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(PasswordChangeForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         # self.helper.form_show_labels = False
         self.helper.layout = Layout(
@@ -65,10 +65,10 @@ class PasswordChangeForm(authforms.PasswordChangeForm):
             )
 
 
-class PasswordResetForm(FriendlyPasswordResetForm):
+class PasswordResetForm(authtoolsforms.FriendlyPasswordResetForm):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(PasswordResetForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Field('email', placeholder="Enter email",
@@ -79,7 +79,7 @@ class PasswordResetForm(FriendlyPasswordResetForm):
 
 class SetPasswordForm(authforms.SetPasswordForm):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(SetPasswordForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Field('new_password1', placeholder="Enter new password",

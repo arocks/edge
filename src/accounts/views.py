@@ -4,13 +4,13 @@ from django.contrib.auth import get_user_model
 from django.contrib import auth
 from django.contrib import messages
 from authtools import views as authviews
-from braces import views
+from braces import views as bracesviews
 from . import forms
 
 User = get_user_model()
 
 
-class LoginView(views.AnonymousRequiredMixin,
+class LoginView(bracesviews.AnonymousRequiredMixin,
                 authviews.LoginView):
     template_name = "accounts/login.html"
     form_class = forms.LoginForm
@@ -20,8 +20,8 @@ class LogoutView(authviews.LogoutView):
     url = reverse_lazy('home')
 
 
-class SignUpView(views.AnonymousRequiredMixin,
-                 views.FormValidMessageMixin,
+class SignUpView(bracesviews.AnonymousRequiredMixin,
+                 bracesviews.FormValidMessageMixin,
                  generic.CreateView):
     form_class = forms.SignupForm
     model = User
@@ -49,7 +49,7 @@ class PasswordChangeView(authviews.PasswordChangeView):
                              messages.INFO,
                              "Your password was changed, "
                              "hence you have been logged out. Please relogin")
-        return super().form_valid(form)
+        return super(PasswordChangeView, self).form_valid(form)
 
 
 class PasswordResetView(authviews.PasswordResetView):
