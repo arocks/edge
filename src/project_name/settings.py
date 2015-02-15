@@ -7,6 +7,7 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
+from django.core.urlresolvers import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / "directory"
 from pathlib import Path
@@ -49,12 +50,14 @@ if "celery" in sys.argv[0]:
 # Application definition
 
 INSTALLED_APPS = (
+    'authtools',
     'django_admin_bootstrapped.bootstrap3',
     'django_admin_bootstrapped',
     'crispy_forms',
     'easy_thumbnails',
 
     'profiles',
+    'accounts',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -118,3 +121,12 @@ MESSAGE_TAGS = {
 if DEBUG:
     INSTALLED_APPS += (
         'debug_toolbar.apps.DebugToolbarConfig',)
+
+# Authentication Settings
+AUTH_USER_MODEL = 'authtools.User'
+LOGIN_REDIRECT_URL = reverse_lazy("profiles:show_self")
+LOGIN_URL = reverse_lazy("accounts:login")
+
+# Show emails to console in DEBUG mode
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

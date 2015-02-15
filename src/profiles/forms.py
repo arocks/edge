@@ -2,8 +2,10 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
 from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from . import models
+
+User = get_user_model()
 
 
 class UserForm(forms.ModelForm):
@@ -13,13 +15,12 @@ class UserForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_tag = False
         self.helper.layout = Layout(
-            Field('first_name'),
-            Field('last_name'),
+            Field('name'),
             )
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name']
+        fields = ['name']
 
 
 class ProfileForm(forms.ModelForm):

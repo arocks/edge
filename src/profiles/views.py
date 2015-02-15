@@ -2,7 +2,6 @@ from django.views import generic
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import logout
 from braces.views import LoginRequiredMixin
 from . import forms
 
@@ -63,17 +62,3 @@ class EditProfile(LoginRequiredMixin, generic.TemplateView):
                              messages.INFO,
                              "Profile details saved!")
         return redirect("profiles:show_self")
-
-
-class DeleteProfile(LoginRequiredMixin, generic.TemplateView):
-    template_name = "profiles/delete_profile.html"
-    http_method_names = ['get', 'post']
-
-    def post(self, request, *args, **kwargs):
-        user = self.request.user
-        username = user.username
-        logout(request)
-        user.delete()
-        messages.add_message(request, messages.WARNING,
-                             "Deleted User: {}!".format(username))
-        return redirect("home")

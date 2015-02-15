@@ -5,7 +5,6 @@
 
 {% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openvariable %} block.super {% templatetag closevariable %}Profile{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-<!-- Benefits of the Django application -->
 {% templatetag openblock %} block container {% templatetag closeblock %}
 
 <div class="container profile-head">
@@ -26,7 +25,6 @@
     <div class="col-sm-4">
       <ul class="list-group">
         <li class="list-group-item text-muted">Profile</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Username</strong></span> {% templatetag openvariable %} show_user.username {% templatetag closevariable %}</li>
         <li class="list-group-item text-right"><span class="pull-left"><strong>Email:</strong></span> {% templatetag openvariable %} show_user.email|default:"missing" {% templatetag closevariable %}
 	  {% templatetag openblock %} if show_user.profile.email_verified {% templatetag closeblock %}
 	    <span class="badge">Verified</span>
@@ -40,7 +38,7 @@
     </div>
     <div class="col-sm-8">
       <div class="panel panel-default">
-        <div class="panel-heading">{% templatetag openvariable %} show_user.username {% templatetag closevariable %}'s Profile</div>
+        <div class="panel-heading">{% templatetag openvariable %} show_user.get_full_name {% templatetag closevariable %}'s Profile</div>
         <div class="panel-body">
 	  <strong>Bio</strong>: {% templatetag openvariable %} show_user.profile.bio {% templatetag closevariable %}
 	</div>
@@ -49,4 +47,5 @@
 </div>
 
 {% templatetag openblock %} endblock {% templatetag closeblock %}
+
 

@@ -34,8 +34,7 @@
   <body>
 
     {% templatetag openblock %} block navbar {% templatetag closeblock %}
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -64,7 +63,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle profile-menu" data-toggle="dropdown">
 			<img src="{% templatetag openblock %} thumbnail user.profile.picture|default:'default_profile.jpg' 30x30 crop {% templatetag closeblock %}" alt="" />
-			{% templatetag openvariable %} user.get_full_name|default:user.username|truncatechars:20 {% templatetag closevariable %}
+			{% templatetag openvariable %} user.get_full_name|truncatechars:20 {% templatetag closevariable %}
 			<span class="caret"></span>
 		    </a>
 		    
@@ -79,10 +78,12 @@
           </ul>
         </div><!--/.nav-collapse -->
         {% templatetag openblock %} endblock {% templatetag closeblock %}
-      </div>
     </div>
-    {% templatetag openblock %} endblock {% templatetag closeblock %}
+    {% templatetag openblock %} endblock navbar {% templatetag closeblock %}
 
+    {% templatetag openblock %} block splash {% templatetag closeblock %}
+    {% templatetag openblock %} endblock splash {% templatetag closeblock %}
+    
     {% templatetag openblock %} block messages {% templatetag closeblock %}
       {% templatetag openblock %} if messages {% templatetag closeblock %}
         {% templatetag openblock %} for message in messages {% templatetag closeblock %}
@@ -134,4 +135,5 @@
     {% templatetag openblock %} endblock scripts {% templatetag closeblock %}
   </body>
 </html>
+
 

@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.core.urlresolvers import resolve, reverse
 from django.contrib.auth import get_user_model
-from accounts.views import SignInAndSignUp
 
 
 class PageOpenTestCase(TestCase):

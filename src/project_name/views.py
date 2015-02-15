@@ -1,8 +1,7 @@
-from accounts.views import SignInAndSignUp
 from django.views import generic
 
 
-class HomePage(SignInAndSignUp):
+class HomePage(generic.TemplateView):
     template_name = "home.html"
 
 
