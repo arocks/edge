@@ -22,7 +22,7 @@ class ShowProfile(LoginRequiredMixin, generic.TemplateView):
         kwargs["show_user"] = user
         # kwargs["user_form"] = forms.UserForm(instance=user)
         # kwargs["profile_form"] = forms.ProfileForm(instance=user.profile)
-        return super().get(request, *args, **kwargs)
+        return super(ShowProfile, self).get(request, *args, **kwargs)
 
 
 class EditProfile(LoginRequiredMixin, generic.TemplateView):
@@ -35,7 +35,7 @@ class EditProfile(LoginRequiredMixin, generic.TemplateView):
             kwargs["user_form"] = forms.UserForm(instance=user)
         if "profile_form" not in kwargs:
             kwargs["profile_form"] = forms.ProfileForm(instance=user.profile)
-        return super().get(request, *args, **kwargs)
+        return super(EditProfile, self).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         user = self.request.user
@@ -50,9 +50,9 @@ class EditProfile(LoginRequiredMixin, generic.TemplateView):
                                  "Please check the entered details")
             user_form = forms.UserForm(instance=user)
             profile_form = forms.ProfileForm(instance=user.profile)
-            return super().get(request,
-                               user_form=user_form,
-                               profile_form=profile_form)
+            return super(EditProfile, self).get(request,
+                                                user_form=user_form,
+                                                profile_form=profile_form)
         # Both forms are fine. Time to save!
         user_form.save()
         profile = profile_form.save(commit=False)
