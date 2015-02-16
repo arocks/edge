@@ -81,9 +81,6 @@
     </div>
     {% templatetag openblock %} endblock navbar {% templatetag closeblock %}
 
-    {% templatetag openblock %} block splash {% templatetag closeblock %}
-    {% templatetag openblock %} endblock splash {% templatetag closeblock %}
-    
     {% templatetag openblock %} block messages {% templatetag closeblock %}
       {% templatetag openblock %} if messages {% templatetag closeblock %}
         {% templatetag openblock %} for message in messages {% templatetag closeblock %}
@@ -95,6 +92,9 @@
       {% templatetag openblock %} endif {% templatetag closeblock %}
     {% templatetag openblock %} endblock {% templatetag closeblock %}
 
+    {% templatetag openblock %} block splash {% templatetag closeblock %}
+    {% templatetag openblock %} endblock splash {% templatetag closeblock %}
+    
     {% templatetag openblock %} block container {% templatetag closeblock %}
     <div class="container">
 
