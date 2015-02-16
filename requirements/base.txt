@@ -6,4 +6,3 @@ django-admin-bootstrapped>=1.6.9
 django-debug-toolbar>=1.2.1
 django-authtools>=1.0.0
 easy-thumbnails>=2.2
-pathlib>=1.0.0

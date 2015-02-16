@@ -1,7 +1,6 @@
 (function(){
   $(window).scroll(function () {
       var top = $(document).scrollTop();
-      console.log("beep");
       $('.corporate-jumbo').css({
         'background-position': '0px -'+(top/3).toFixed(2)+'px'
       });
