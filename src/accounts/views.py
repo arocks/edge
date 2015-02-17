@@ -45,10 +45,9 @@ class PasswordChangeView(authviews.PasswordChangeView):
 
     def form_valid(self, form):
         form.save()
-        messages.add_message(self.request,
-                             messages.INFO,
-                             "Your password was changed, "
-                             "hence you have been logged out. Please relogin")
+        messages.success(self.request,
+                         "Your password was changed, "
+                         "hence you have been logged out. Please relogin")
         return super(PasswordChangeView, self).form_valid(form)
 
 
