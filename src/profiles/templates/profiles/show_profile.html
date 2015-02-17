@@ -27,9 +27,11 @@
         <li class="list-group-item text-muted">Profile</li>
         <li class="list-group-item text-right"><span class="pull-left"><strong>Email:</strong></span> {% templatetag openvariable %} show_user.email|default:"missing" {% templatetag closevariable %}
 	  {% templatetag openblock %} if show_user.profile.email_verified {% templatetag closeblock %}
-	    <span class="badge">Verified</span>
+	    <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" title="This email address has been verified"></span>
+	    <span class="sr-only">Verified</span>
 	  {% templatetag openblock %} else {% templatetag closeblock %}
-	    <span class="badge">Not Verified</span>
+	    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true" title="This email address is not verified"></span>
+	    <span class="sr-only">Not Verified</span>
 	  {% templatetag openblock %} endif {% templatetag closeblock %}
 	</li>
         <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> {% templatetag openvariable %} show_user.date_joined {% templatetag closevariable %}</li>
