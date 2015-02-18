@@ -40,7 +40,11 @@
     </div>
     <div class="col-sm-8">
       <div class="panel panel-default">
-        <div class="panel-heading">{% templatetag openvariable %} show_user.get_full_name {% templatetag closevariable %}'s Profile</div>
+        <div class="panel-heading">{% templatetag openvariable %} show_user.get_full_name {% templatetag closevariable %}'s Profile
+	  <a href="{% templatetag openblock %} url 'profiles:show' show_user.profile.slug {% templatetag closeblock %}">
+	    <span class="glyphicon glyphicon-link" aria-hidden="true" title="Profile permalink"></span>
+	    <span class="sr-only">Permalink</span></a> {% templatetag openvariable %} show_user.profile.get_absolute_url {% templatetag closevariable %}
+	</div>
         <div class="panel-body">
 	  <strong>Bio</strong>: {% templatetag openvariable %} show_user.profile.bio {% templatetag closevariable %}
 	</div>
