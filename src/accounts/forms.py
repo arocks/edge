@@ -22,7 +22,7 @@ class LoginForm(AuthenticationForm):
             HTML('<a href="{}">Forgot Password?</a>'.format(
                 reverse("accounts:password-reset"))),
             Field('remember_me'),
-            Submit('sign_in', 'Sign in',
+            Submit('sign_in', 'Log in',
                    css_class="btn btn-lg btn-primary btn-block"),
             )
 

@@ -11,7 +11,7 @@
 
 {% templatetag openblock %} block navbar-right {% templatetag closeblock %}
   {% templatetag openblock %} if not user.is_authenticated {% templatetag closeblock %}
-<a class="btn btn-default" href="{% templatetag openblock %} url 'accounts:login' {% templatetag closeblock %}" role="button">Sign in</a>
+<a class="btn btn-default" href="{% templatetag openblock %} url 'accounts:login' {% templatetag closeblock %}" role="button">Log in</a>
 <a class="btn btn-primary" href="{% templatetag openblock %} url 'accounts:signup' {% templatetag closeblock %}" role="button">Sign up</a>
   {% templatetag openblock %} else {% templatetag closeblock %}
     {% templatetag openvariable %} block.super {% templatetag closevariable %}
