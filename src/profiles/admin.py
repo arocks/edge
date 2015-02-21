@@ -22,7 +22,8 @@ class NewUserAdmin(NamedUserAdmin):
     def permalink(self, obj):
         url = reverse("profiles:show",
                       kwargs={"slug": obj.profile.slug})
-        return '<a href="%s">%s</a>' % (url, "¶")
+        # Unicode #182 is Pilcrow sign
+        return '<a href="%s">%s</a>' % (url, chr(182))
     permalink.allow_tags = True
 
 admin.site.unregister(User)
