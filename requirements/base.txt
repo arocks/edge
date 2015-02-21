@@ -1,0 +1,8 @@
+Django>=1.7
+django-environ>=0.3.0
+django-braces>=1.4.0
+django-crispy-forms>=1.4.0
+django-admin-bootstrapped>=1.6.9
+django-debug-toolbar>=1.2.1
+django-authtools>=1.0.0
+easy-thumbnails>=2.2

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-{% templatetag openblock %} load staticfiles {% templatetag closeblock %}
+    {% templatetag openblock %} load staticfiles {% templatetag closeblock %}
+    {% templatetag openblock %} load thumbnail {% templatetag closeblock %}
+    
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +14,7 @@
     <title>{% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openblock %} include "_brandname.html" {% templatetag closeblock %} :: {% templatetag openblock %} endblock {% templatetag closeblock %}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% templatetag openblock %} static 'bootstrap/css/bootstrap.css' {% templatetag closeblock %}" rel="stylesheet">
+    <link href="{% templatetag openblock %} static 'bootstrap/css/bootstrap.min.css' {% templatetag closeblock %}" rel="stylesheet">
 
     <!-- Custom styles for this site -->
     {% templatetag openblock %} block styles {% templatetag closeblock %}
@@ -32,8 +34,7 @@
   <body>
 
     {% templatetag openblock %} block navbar {% templatetag closeblock %}
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -60,9 +61,15 @@
                 <li><a href="{% templatetag openblock %} url 'admin:index' {% templatetag closeblock %}">Admin</a></li>
                 {% templatetag openblock %} endif {% templatetag closeblock %}
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% templatetag openvariable %} user.get_full_name|default:user.username {% templatetag closevariable %} <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle profile-menu" data-toggle="dropdown">
+			<img src="{% templatetag openblock %} thumbnail user.profile.picture|default:'default_profile.png' 30x30 crop {% templatetag closeblock %}" alt="" />
+			{% templatetag openvariable %} user.get_full_name|truncatechars:20 {% templatetag closevariable %}
+			<span class="caret"></span>
+		    </a>
+		    
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="{% templatetag openblock %} url 'logout' {% templatetag closeblock %}">Logout</a></li>
+                    <li><a href="{% templatetag openblock %} url 'profiles:show_self' {% templatetag closeblock %}">Profile</a></li>
+                    <li><a href="{% templatetag openblock %} url 'accounts:logout' {% templatetag closeblock %}">Logout</a></li>
                   </ul>
                 </li>
               {% templatetag openblock %} endif {% templatetag closeblock %}
@@ -71,9 +78,8 @@
           </ul>
         </div><!--/.nav-collapse -->
         {% templatetag openblock %} endblock {% templatetag closeblock %}
-      </div>
     </div>
-    {% templatetag openblock %} endblock {% templatetag closeblock %}
+    {% templatetag openblock %} endblock navbar {% templatetag closeblock %}
 
     {% templatetag openblock %} block messages {% templatetag closeblock %}
       {% templatetag openblock %} if messages {% templatetag closeblock %}
@@ -86,6 +92,9 @@
       {% templatetag openblock %} endif {% templatetag closeblock %}
     {% templatetag openblock %} endblock {% templatetag closeblock %}
 
+    {% templatetag openblock %} block splash {% templatetag closeblock %}
+    {% templatetag openblock %} endblock splash {% templatetag closeblock %}
+    
     {% templatetag openblock %} block container {% templatetag closeblock %}
     <div class="container">
 
@@ -126,3 +135,5 @@
     {% templatetag openblock %} endblock scripts {% templatetag closeblock %}
   </body>
 </html>
+
+

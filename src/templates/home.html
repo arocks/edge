@@ -11,34 +11,31 @@
 
 {% templatetag openblock %} block navbar-right {% templatetag closeblock %}
   {% templatetag openblock %} if not user.is_authenticated {% templatetag closeblock %}
-    {% templatetag openblock %} crispy signin_form {% templatetag closeblock %}
+<a class="btn btn-default" href="{% templatetag openblock %} url 'accounts:login' {% templatetag closeblock %}" role="button">Log in</a>
+<a class="btn btn-primary" href="{% templatetag openblock %} url 'accounts:signup' {% templatetag closeblock %}" role="button">Sign up</a>
   {% templatetag openblock %} else {% templatetag closeblock %}
     {% templatetag openvariable %} block.super {% templatetag closevariable %}
   {% templatetag openblock %} endif {% templatetag closeblock %}
 {% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% templatetag openblock %} block container {% templatetag closeblock %}
+{% templatetag openblock %} block splash {% templatetag closeblock %}
   <div class="jumbotron jumbotron-carousel corporate-jumbo">
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-sm-8">
           <h1>{% templatetag openblock %} include "_brandname.html" {% templatetag closeblock %}</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet!</p>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+	  <a class="btn btn-primary" href="{% templatetag openblock %} url 'accounts:signup' {% templatetag closeblock %}" role="button">Sign up for Free!</a>
         </div>
         <div class="col-md-4 col-sm-4">
-
-          {% templatetag openblock %} if not user.is_authenticated {% templatetag closeblock %}
-            <div class="span3 well">
-              <legend>Create an Account</legend>
-              {% templatetag openblock %} crispy signup_form {% templatetag closeblock %}
-            </div>
-          {% templatetag openblock %} endif {% templatetag closeblock %}
 
         </div>
       </div>
     </div>
   </div>
+{% templatetag openblock %} endblock splash {% templatetag closeblock %}
 
+{% templatetag openblock %} block container {% templatetag closeblock %}
 <!-- Benefits of the Django application -->
 <a name="about"></a>
 
@@ -63,4 +60,8 @@
 </div>
 
 {% templatetag openblock %} endblock container {% templatetag closeblock %}
+
+{% templatetag openblock %} block scripts {% templatetag closeblock %}
+<script src="{% templatetag openblock %} static 'site/js/site.js' {% templatetag closeblock %}"></script>
+{% templatetag openblock %} endblock scripts {% templatetag closeblock %}
 

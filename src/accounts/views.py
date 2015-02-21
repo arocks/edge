@@ -1,77 +1,68 @@
-# from django.shortcuts import render
-from django.views import generic
-from . import forms
-from django.shortcuts import redirect
 from django.core.urlresolvers import reverse_lazy
-from django.contrib.auth import authenticate
-from django.contrib.auth import login
-from django.contrib.auth import logout
+from django.views import generic
+from django.contrib.auth import get_user_model
+from django.contrib import auth
 from django.contrib import messages
+from authtools import views as authviews
+from braces import views as bracesviews
+from . import forms
+
+User = get_user_model()
 
 
-class SignInAndSignUp(generic.edit.FormMixin, generic.TemplateView):
-
-    signin_form_class = forms.LoginForm
-    signup_form_class = forms.SignupForm
-
-    def get(self, request, *args, **kwargs):
-        if "signin_form" not in kwargs:
-            kwargs["signin_form"] = self.signin_form_class()
-        if "signup_form" not in kwargs:
-            kwargs["signup_form"] = self.signup_form_class()
-        return super().get(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        if 'sign_in' in request.POST:
-            form = self.signin_form_class(**self.get_form_kwargs())
-            if not form.is_valid():
-                messages.add_message(request,
-                                     messages.ERROR,
-                                     "Unable login! "
-                                     "Check username/password")
-                return super().get(request,
-                                   signup_form=self.signup_form_class(),
-                                   signin_form=form)
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password"]
-            user = authenticate(username=username, password=password)
-            if user is not None and user.is_active:
-                login(self.request, user)
-            else:
-                messages.add_message(request, messages.ERROR,
-                                     "Unable to find given username!")
-        if 'sign_up' in request.POST:
-            form = self.signup_form_class(**self.get_form_kwargs())
-            if not form.is_valid():
-                messages.add_message(request,
-                                     messages.ERROR,
-                                     "Unable to register! "
-                                     "Please retype the details")
-                return super().get(request,
-                                   signin_form=self.signin_form_class(),
-                                   signup_form=form)
-            form.save()
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password1"]
-            messages.add_message(request,
-                                 messages.INFO,
-                                 "{0} added sucessfully".format(
-                                     username))
-            # Login automatically
-            user = authenticate(username=username, password=password)
-            login(self.request, user)
-        return redirect("home")
+class LoginView(bracesviews.AnonymousRequiredMixin,
+                authviews.LoginView):
+    template_name = "accounts/login.html"
+    form_class = forms.LoginForm
 
 
-class LogoutView(generic.RedirectView):
-    url = reverse_lazy("home")
-
-    def get(self, request, *args, **kwargs):
-        logout(request)
-        messages.add_message(request, messages.INFO,
-                             "Logout successful!")
-        return super().get(request, *args, **kwargs)
+class LogoutView(authviews.LogoutView):
+    url = reverse_lazy('home')
 
 
-class AboutView(generic.TemplateView):
-    template_name = "about.html"
+class SignUpView(bracesviews.AnonymousRequiredMixin,
+                 bracesviews.FormValidMessageMixin,
+                 generic.CreateView):
+    form_class = forms.SignupForm
+    model = User
+    template_name = 'accounts/signup.html'
+    success_url = reverse_lazy('home')
+    form_valid_message = "You're signed up!"
+
+    def form_valid(self, form):
+        r = super(SignUpView, self).form_valid(form)
+        username = form.cleaned_data["email"]
+        password = form.cleaned_data["password1"]
+        user = auth.authenticate(email=username, password=password)
+        auth.login(self.request, user)
+        return r
+
+
+class PasswordChangeView(authviews.PasswordChangeView):
+    form_class = forms.PasswordChangeForm
+    template_name = 'accounts/password-change.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request,
+                         "Your password was changed, "
+                         "hence you have been logged out. Please relogin")
+        return super(PasswordChangeView, self).form_valid(form)
+
+
+class PasswordResetView(authviews.PasswordResetView):
+    form_class = forms.PasswordResetForm
+    template_name = 'accounts/password-reset.html'
+    success_url = reverse_lazy('accounts:password-reset-done')
+    subject_template_name = 'accounts/emails/password-reset-subject.txt'
+    email_template_name = 'accounts/emails/password-reset-email.html'
+
+
+class PasswordResetDoneView(authviews.PasswordResetDoneView):
+    template_name = 'accounts/password-reset-done.html'
+
+
+class PasswordResetConfirmView(authviews.PasswordResetConfirmAndLoginView):
+    template_name = 'accounts/password-reset-confirm.html'
+    form_class = forms.SetPasswordForm

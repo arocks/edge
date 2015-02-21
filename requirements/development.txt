@@ -1,4 +1,4 @@
--r requirements.txt
+-r base.txt
 
 # Extra stuff required for local dev
 pudb==2014.1

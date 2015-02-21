@@ -1,0 +1,42 @@
+{% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load staticfiles {% templatetag closeblock %}
+{% templatetag openblock %} load crispy_forms_tags {% templatetag closeblock %}
+{% templatetag openblock %} load thumbnail {% templatetag closeblock %}
+
+{% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openvariable %} block.super {% templatetag closevariable %}Profile{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+<!-- Benefits of the Django application -->
+{% templatetag openblock %} block container {% templatetag closeblock %}
+
+<div class="container">
+  <h1 class="text-primary">Edit Profile</h1>
+  <hr>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-3">
+      <div class="text-center">
+        <img title="profile picture" class="img-circle img-responsive" src="{% templatetag openblock %} thumbnail user.profile.picture|default:'default_profile.png' 140x140 crop {% templatetag closeblock %}">
+      </div>
+    </div>
+      
+    <!-- edit form column -->
+    <div class="col-md-9">
+      <h3>Personal info</h3>
+      <form enctype="multipart/form-data" method="post">
+	{% templatetag openblock %} crispy user_form {% templatetag closeblock %}
+	{% templatetag openblock %} crispy profile_form {% templatetag closeblock %}
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <a class="btn btn-default pull-right" href="{% templatetag openblock %} url 'accounts:password-change' {% templatetag closeblock %}">Change Password</a>
+    </div>
+  </div>
+</div>
+{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+
