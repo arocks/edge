@@ -1,3 +1,4 @@
+# -*- coding: iso-8859-15 -*-
 from django.contrib import admin
 from authtools.admin import NamedUserAdmin
 from .models import Profile
