@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.contrib import admin
 from authtools.admin import NamedUserAdmin
 from .models import Profile
@@ -22,8 +23,8 @@ class NewUserAdmin(NamedUserAdmin):
     def permalink(self, obj):
         url = reverse("profiles:show",
                       kwargs={"slug": obj.profile.slug})
-        # Unicode #182 is Pilcrow sign
-        return '<a href="%s">%s</a>' % (url, chr(182))
+        # Unicode hex b6 is the Pilcrow sign
+        return '<a href="{}">{}</a>'.format(url, '\xb6')
     permalink.allow_tags = True
 
 admin.site.unregister(User)
