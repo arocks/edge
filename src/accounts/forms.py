@@ -15,7 +15,8 @@ class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        # self.helper.form_class = 'form-signin'
+        self.fields["username"].widget.input_type = "email"  # ugly hack
+
         self.helper.layout = Layout(
             Field('username', placeholder="Enter Email", autofocus=""),
             Field('password', placeholder="Enter Password"),
@@ -40,7 +41,8 @@ class SignupForm(authtoolsforms.UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(SignupForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        # self.helper.form_class = 'form-signin'
+        self.fields["email"].widget.input_type = "email"  # ugly hack
+
         self.helper.layout = Layout(
             Field('email', placeholder="Enter Email", autofocus=""),
             Field('name', placeholder="Enter Full Name"),
@@ -55,7 +57,7 @@ class PasswordChangeForm(authforms.PasswordChangeForm):
     def __init__(self, *args, **kwargs):
         super(PasswordChangeForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        # self.helper.form_show_labels = False
+
         self.helper.layout = Layout(
             Field('old_password', placeholder="Enter old password",
                   autofocus=""),
@@ -70,6 +72,7 @@ class PasswordResetForm(authtoolsforms.FriendlyPasswordResetForm):
     def __init__(self, *args, **kwargs):
         super(PasswordResetForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
+
         self.helper.layout = Layout(
             Field('email', placeholder="Enter email",
                   autofocus=""),
@@ -81,6 +84,7 @@ class SetPasswordForm(authforms.SetPasswordForm):
     def __init__(self, *args, **kwargs):
         super(SetPasswordForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
+
         self.helper.layout = Layout(
             Field('new_password1', placeholder="Enter new password",
                   autofocus=""),
