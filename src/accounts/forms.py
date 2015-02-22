@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.contrib.auth.forms import AuthenticationForm
 from django import forms
 from django.conf import settings
