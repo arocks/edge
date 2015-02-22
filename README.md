@@ -40,7 +40,7 @@ To set up a development environment quickly, first install Python 3.4. It
 comes with virtualenv built-in. So create a virtual env by:
 
     1. `$ python3.4 -m venv {{ project_name }}`
-    1. `$ . {{ project_name }}/bin/activate`
+    2. `$ . {{ project_name }}/bin/activate`
 
 > Sometimes, binaries like pip get installed inside `local/bin/`. So append
 > this line to `{{ project_name }}/bin/activate`:
