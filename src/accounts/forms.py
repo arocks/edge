@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 from django.contrib.auth.forms import AuthenticationForm
 from django import forms
-from django.conf import settings
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
 from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
@@ -27,14 +26,6 @@ class LoginForm(AuthenticationForm):
             Submit('sign_in', 'Log in',
                    css_class="btn btn-lg btn-primary btn-block"),
             )
-
-    def confirm_login_allowed(self, user):
-        super(LoginForm, self).confirm_login_allowed(user)
-        remember_me = self.cleaned_data.get('remember_me')
-        if remember_me is True:
-            ONE_MONTH = 30*24*60*60
-            expiry = getattr(settings, "KEEP_LOGGED_DURATION", ONE_MONTH)
-            self.request.session.set_expiry(expiry)
 
 
 class SignupForm(authtoolsforms.UserCreationForm):

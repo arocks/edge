@@ -6,6 +6,7 @@ from django.contrib import auth
 from django.contrib import messages
 from authtools import views as authviews
 from braces import views as bracesviews
+from django.conf import settings
 from . import forms
 
 User = get_user_model()
@@ -15,6 +16,15 @@ class LoginView(bracesviews.AnonymousRequiredMixin,
                 authviews.LoginView):
     template_name = "accounts/login.html"
     form_class = forms.LoginForm
+
+    def form_valid(self, form):
+        redirect = super(LoginView, self).form_valid(form)
+        remember_me = form.cleaned_data.get('remember_me')
+        if remember_me is True:
+            ONE_MONTH = 30*24*60*60
+            expiry = getattr(settings, "KEEP_LOGGED_DURATION", ONE_MONTH)
+            self.request.session.set_expiry(expiry)
+        return redirect
 
 
 class LogoutView(authviews.LogoutView):
