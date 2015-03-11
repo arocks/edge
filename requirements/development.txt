@@ -1,4 +1,4 @@
 -r base.txt
 
 # Extra stuff required for local dev
-pudb==2014.1
+Werkzeug>=0.10.1
