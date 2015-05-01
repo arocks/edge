@@ -2,3 +2,4 @@
 
 # Extra stuff required for local dev
 pudb==2014.1
+django-debug-toolbar>=1.2.1
