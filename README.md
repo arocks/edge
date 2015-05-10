@@ -1,9 +1,8 @@
-{% comment "This blockquote will be deleted" %}
+{% comment "This comment section will be deleted in the generated project" %}
  
 #edge - a lighter, cutting-edge Django project skeleton.
 
-FEATURES: Python 2.7 or 3.4 / Django 1.7 support, Bootstrap themed, User Registration/Sign up, User 
-Profiles
+FEATURES: Python 2.7 or 3.4 and Django 1.8 support, Bootstrap themed, User Registration/Sign up, User Profiles
 
 ## Quick start:
 
@@ -24,7 +23,7 @@ Rest of this README will be copied to the generated project.
 
 # {{ project_name }}
 
-{{ project_name }} is a (short description) built with [Python][0] using the [Django Web Framework][1].
+{{ project_name }} is a _short description_. It is built with [Python][0] using the [Django Web Framework][1].
 
 This project has the following basic apps:
 
@@ -42,12 +41,7 @@ comes with virtualenv built-in. So create a virtual env by:
     1. `$ python3.4 -m venv {{ project_name }}`
     2. `$ . {{ project_name }}/bin/activate`
 
-> Sometimes, binaries like pip get installed inside `local/bin/`. So append
-> this line to `{{ project_name }}/bin/activate`:
->
-> `PATH="$VIRTUAL_ENV/local/bin:$PATH"`
-
-Now the pip commands should work smoothly. Install all dependencies:
+Install all dependencies:
 
     pip install -r dev-requirements.txt
 
