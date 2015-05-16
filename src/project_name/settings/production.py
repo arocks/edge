@@ -6,6 +6,9 @@ from .base import *
 DEBUG = False
 TEMPLATE_DEBUG = False
 
+# Must mention ALLOWED_HOSTS in production!
+# ALLOWED_HOSTS = "1.2.3.4"
+
 # Cache the templates in memory for speed-up
 loaders = [
     ('django.template.loaders.cached.Loader', [
