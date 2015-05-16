@@ -15,3 +15,4 @@ loaders = [
 ]
 
 TEMPLATES[0]['OPTIONS'].update({"loaders": loaders})
+TEMPLATES[0].update({"APP_DIRS": False})
