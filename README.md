@@ -1,5 +1,5 @@
 {% comment "This comment section will be deleted in the generated project" %}
- 
+
 #edge - a lighter, cutting-edge Django project skeleton.
 
 FEATURES: Python 2.7 or 3.4 and Django 1.8 support, Bootstrap themed, User Registration/Sign up, User Profiles
@@ -44,7 +44,7 @@ comes with virtualenv built-in. So create a virtual env by:
 
 Install all dependencies:
 
-    pip install -r dev-requirements.txt
+    pip install -r requirements/development.txt
 
 Run migrations:
 
