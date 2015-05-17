@@ -13,7 +13,7 @@ FEATURES: Python 2.7 or 3.4 and Django 1.8 support, Bootstrap themed, User Regis
 5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env`
 6. `$ python manage.py migrate`
 
-More information at: https://github.com/arocks/edge/wiki
+More information at: http://django-edge.readthedocs.org/
 
 
 Rest of this README will be copied to the generated project.
