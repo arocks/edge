@@ -4,13 +4,14 @@
 
 [![build-status-image]][travis]
 
-**A Fantastic Django project skeleton.**
+**A Fantastic Django project starter.**
 
 ## Features
 
-* Ready Bootstrap themed pages
+* Ready Bootstrap-themed pages
 * User Registration/Sign up
 * Better Security with [12-Factor](http://12factor.net/) recommendations 
+* Logging/Debugging Helpers
 * Works on Python 2.7 or 3.4
 
 ## Quick start:
@@ -48,15 +49,15 @@ This project has the following basic apps:
 
 ### Quick start
 
-To set up a development environment quickly, first install Python 3.4. It
+To set up a development environment quickly, first install Python 3. It
 comes with virtualenv built-in. So create a virtual env by:
 
-    1. `$ python3.4 -m venv {{ project_name }}`
+    1. `$ python3 -m venv {{ project_name }}`
     2. `$ . {{ project_name }}/bin/activate`
 
 Install all dependencies:
 
-    pip install -r requirements/development.txt
+    pip install -r requirements.txt
 
 Run migrations:
 
@@ -64,7 +65,7 @@ Run migrations:
 
 ### Detailed instructions
 
-Take a look at the docs for a detailed instructions guide.
+Take a look at the docs for more information.
 
 [0]: https://www.python.org/
 [1]: https://www.djangoproject.com/
