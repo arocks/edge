@@ -1,8 +1,18 @@
 {% comment "This comment section will be deleted in the generated project" %}
 
-#edge - a lighter, cutting-edge Django project skeleton.
+# [Edge][docs]
 
-FEATURES: Python 2.7 or 3.4 and Django 1.8 support, Bootstrap themed, User Registration/Sign up, User Profiles
+[![build-status-image]][travis]
+[![pypi-version]][pypi]
+
+**Fantastic Django project skeleton.**
+
+## Features
+
+* Ready home page with Bootstrap themed
+* User Registration/Sign up 
+* Better Security with [12-Factor](http://12factor.net/) recommendations 
+* Works on Python 2.7 or 3.4
 
 ## Quick start:
 
@@ -10,11 +20,13 @@ FEATURES: Python 2.7 or 3.4 and Django 1.8 support, Bootstrap themed, User Regis
 2. `$ cd my_proj`
 3. `$ pip install -r requirements.txt `
 4. `$ cd src`
-5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env`
+5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env` (New!)
 6. `$ python manage.py migrate`
 
-More information at: http://django-edge.readthedocs.org/
+More information at: [http://django-edge.readthedocs.org/][docs]
 
+
+[docs]: http://django-edge.readthedocs.org/
 
 Rest of this README will be copied to the generated project.
 
