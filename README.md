@@ -3,14 +3,13 @@
 # [Edge][docs]
 
 [![build-status-image]][travis]
-[![pypi-version]][pypi]
 
-**Fantastic Django project skeleton.**
+**A Fantastic Django project skeleton.**
 
 ## Features
 
-* Ready home page with Bootstrap themed
-* User Registration/Sign up 
+* Ready Bootstrap themed pages
+* User Registration/Sign up
 * Better Security with [12-Factor](http://12factor.net/) recommendations 
 * Works on Python 2.7 or 3.4
 
@@ -27,6 +26,7 @@ More information at: [http://django-edge.readthedocs.org/][docs]
 
 
 [docs]: http://django-edge.readthedocs.org/
+[travis]: https://travis-ci.org/arocks/edge.svg?branch=master
 
 Rest of this README will be copied to the generated project.
 
