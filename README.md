@@ -57,7 +57,8 @@ Run migrations:
 
 ### Detailed instructions
 
-Take a look at the docs for a detailed instructions guide.
+Take a look at the [docs][2] for a detailed instructions guide.
 
 [0]: https://www.python.org/
 [1]: https://www.djangoproject.com/
+[2]: http://django-edge.readthedocs.org/
