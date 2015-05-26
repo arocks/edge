@@ -54,3 +54,6 @@ tramp
 # Windows
 Thumbs.db
 Desktop.ini
+
+# Project settings
+site/
