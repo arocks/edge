@@ -2,7 +2,7 @@
 
 # [Edge][docs]
 
-[![build-status-image]][travis]
+[![Build Status](https://travis-ci.org/arocks/edge.svg?branch=1_8)](https://travis-ci.org/arocks/edge)
 
 **A Fantastic Django project starter.**
 
@@ -27,7 +27,6 @@ More information at: [http://django-edge.readthedocs.org/][docs]
 
 
 [docs]: http://django-edge.readthedocs.org/
-[travis]: https://travis-ci.org/arocks/edge.svg?branch=master
 
 Rest of this README will be copied to the generated project.
 
