@@ -1,3 +1,5 @@
 -r base.txt
 
-# Extra stuff required for production
+# Extra stuff required for production like Prod Database interfacing packages
+# psycopg2
+
