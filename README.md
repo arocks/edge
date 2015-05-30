@@ -2,7 +2,7 @@
 
 # [Edge][docs]
 
-[![Build Status](https://travis-ci.org/arocks/edge.svg?branch=1_8)](https://travis-ci.org/arocks/edge)
+[![Build Status](https://travis-ci.org/arocks/edge.svg?branch=master)](https://travis-ci.org/arocks/edge)
 
 **A Fantastic Django project starter.**
 
