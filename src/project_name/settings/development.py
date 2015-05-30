@@ -1,4 +1,6 @@
-from .base import *
+from .base import *             # NOQA
+import sys
+import logging.config
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -6,7 +8,6 @@ TEMPLATE_DEBUG = True
 
 # Turn off debug while imported by Celery with a workaround
 # See http://stackoverflow.com/a/4806384
-import sys
 if "celery" in sys.argv[0]:
     DEBUG = False
 
@@ -23,7 +24,9 @@ THUMBNAIL_DEBUG = True
 # Log everything to the logs directory at the top
 LOGFILE_ROOT = join(dirname(BASE_DIR), 'logs')
 
-# Reset logging (see http://www.caktusgroup.com/blog/2015/01/27/Django-Logging-Configuration-logging_config-default-settings-logger/)
+# Reset logging
+# (see http://www.caktusgroup.com/blog/2015/01/27/Django-Logging-Configuration-logging_config-default-settings-logger/)
+
 LOGGING_CONFIG = None
 LOGGING = {
     'version': 1,
@@ -69,5 +72,4 @@ LOGGING = {
     }
 }
 
-import logging.config
 logging.config.dictConfig(LOGGING)
