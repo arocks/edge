@@ -21,5 +21,6 @@ User = get_user_model()
 
 class ProfileTestCase(TestCase):
     def test_profiles_created(self):
-        u = User.objects.create_user(email="dummy@example.com")
+        u = User.objects.create_user(id=1, email="dummy@example.com")
+        p = Profile.objects.create(user_id=1, bio="test bio")
         self.assertIsNotNone(u.profile)
