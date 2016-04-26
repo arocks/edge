@@ -7,8 +7,12 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
+from os.path import dirname, join
+
+from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
-from os.path import dirname, join, exists
+import environ
+
 
 # Build paths inside the project like this: join(BASE_DIR, "directory")
 BASE_DIR = dirname(dirname(dirname(__file__)))
@@ -42,14 +46,7 @@ TEMPLATES = [
 ]
 
 # Use 12factor inspired environment variables or from a file
-import environ
 env = environ.Env()
-
-# Ideally move env file should be outside the git repo
-# i.e. BASE_DIR.parent.parent
-env_file = join(dirname(__file__), 'local.env')
-if exists(env_file):
-    environ.Env.read_env(str(env_file))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
@@ -127,7 +124,6 @@ ALLOWED_HOSTS = []
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # For Bootstrap 3, change error alert to 'danger'
-from django.contrib import messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
