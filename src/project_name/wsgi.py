@@ -13,12 +13,13 @@ from django.conf import settings
 from django.core.wsgi import get_wsgi_application
 import environ
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ project_name }}.settings.production")
-application = get_wsgi_application()
 
 env = environ.Env()
 env_file = join(dirname(__file__), 'settings/' 'local.env')
 if exists(env_file):
     environ.Env.read_env(str(env_file))
+
+application = get_wsgi_application()
 
 # Wrap werkzeug debugger if DEBUG is on
 if settings.DEBUG:
