@@ -24,6 +24,8 @@ if settings.DEBUG:
             six.reraise(exc_type, exc_value, tb)
 
         django.views.debug.technical_500_response = null_technical_500_response
-        application = DebuggedApplication(application, evalex=True)
+        application = DebuggedApplication(application, evalex=True,
+                                          # Turning off pin security as DEBUG is True
+                                          pin_security=False)
     except ImportError:
         pass
