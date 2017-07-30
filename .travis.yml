@@ -10,4 +10,4 @@ install:
   - cp my_proj/settings/local.sample.env my_proj/settings/local.env
   - python manage.py migrate
 script:
-  - python manage.py test profiles
+  - python manage.py test profiles accounts
