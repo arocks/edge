@@ -6,6 +6,10 @@ import profiles.urls
 import accounts.urls
 from . import views
 
+# Personalized admin site settings like title and header
+admin.site.site_title = '{{ project_name|title }} Site Admin'
+admin.site.site_header = '{{ project_name|title }} Administration'
+
 urlpatterns = [
     url(r'^$', views.HomePage.as_view(), name='home'),
     url(r'^about/$', views.AboutPage.as_view(), name='about'),
