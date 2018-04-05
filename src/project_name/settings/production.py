@@ -69,7 +69,7 @@ LOGGING = {
         'proj_log_file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': join(LOGFILE_ROOT, 'project.log'),
+            'filename': LOGFILE_ROOT / 'project.log',
             'formatter': 'verbose'
         },
         'console': {

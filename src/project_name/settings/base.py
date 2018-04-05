@@ -8,7 +8,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 from django.urls import reverse_lazy
-from os.path import dirname, join, exists
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / "directory"
@@ -49,7 +48,7 @@ env = environ.Env()
 # Ideally move env file should be outside the git repo
 # i.e. BASE_DIR.parent.parent
 env_file = Path(__file__).resolve().parent / 'local.env'
-if exists(env_file):
+if env_file.exists():
     environ.Env.read_env(str(env_file))
 
 # Quick-start development settings - unsuitable for production
