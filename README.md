@@ -24,6 +24,7 @@
 6. `$ python manage.py migrate`
 
 More information at: [http://django-edge.readthedocs.org/][docs]
+
 [docs]: http://django-edge.readthedocs.org/
 
 
@@ -40,7 +41,8 @@ More information at: [http://django-edge.readthedocs.org/][docs]
 If you need to keep `requirements.txt` updated then run
 
     pipenv lock --requirements > requirements/base.txt
-    pipenv lock --requirements --dev > requirements/development.txt
+    echo "-r base.txt" > requirements/development.txt
+    pipenv lock --requirements --dev >> requirements/development.txt
 
 Rest of this README will be copied to the generated project.
 
