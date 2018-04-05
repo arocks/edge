@@ -1,3 +1,3 @@
 -r base.txt
-django-debug-toolbar>=1.8
-Werkzeug>=0.12.2
+django-debug-toolbar==1.9.1 --hash=sha256:4af2a4e1e932dadbda197b18585962d4fc20172b4e5a479490bc659fe998864d  --hash=sha256:d9ea75659f76d8f1e3eb8f390b47fc5bad0908d949c34a8a3c4c87978eb40a0f
+werkzeug==0.14.1 --hash=sha256:d5da73735293558eb1651ee2fddc4d0dedcfa06538b8813a2e20011583c9e49b  --hash=sha256:c3fd7a7d41976d9f44db327260e263132466836cef6f91512889ed60ad26557c

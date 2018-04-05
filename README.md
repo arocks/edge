@@ -10,7 +10,7 @@
 
 * Ready Bootstrap-themed pages
 * User Registration/Sign up
-* Better Security with [12-Factor](http://12factor.net/) recommendations 
+* Better Security with [12-Factor](http://12factor.net/) recommendations
 * Logging/Debugging Helpers
 * Works on Python 2.7 or 3.4
 
@@ -24,9 +24,23 @@
 6. `$ python manage.py migrate`
 
 More information at: [http://django-edge.readthedocs.org/][docs]
-
-
 [docs]: http://django-edge.readthedocs.org/
+
+
+## Recommended Installation (with `pipenv`)
+1. [Install pipenv system-wide or locally](https://docs.pipenv.org/) but outside a virtualenv
+2. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env my_proj`
+3. `$ cd my_proj`
+4. `$ pipenv install --dev`
+4. `$ pipenv shell`
+4. `$ cd src`
+5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env` (New!)
+6. `$ python manage.py migrate`
+
+If you need to keep `requirements.txt` updated then run
+
+    pipenv lock --requirements > requirements/base.txt
+    pipenv lock --requirements --dev > requirements/development.txt
 
 Rest of this README will be copied to the generated project.
 
