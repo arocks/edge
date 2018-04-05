@@ -12,7 +12,7 @@ from os.path import dirname, join, exists
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / "directory"
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 STATICFILES_DIRS = [BASE_DIR / 'static', ]
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = "/media/"
@@ -48,7 +48,7 @@ env = environ.Env()
 
 # Ideally move env file should be outside the git repo
 # i.e. BASE_DIR.parent.parent
-env_file = BASE_DIR.parent / 'local.env'
+env_file = Path(__file__).resolve().parent / 'local.env'
 if exists(env_file):
     environ.Env.read_env(str(env_file))
 
