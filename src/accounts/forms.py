@@ -12,7 +12,7 @@ class LoginForm(AuthenticationForm):
     remember_me = forms.BooleanField(required=False, initial=False)
 
     def __init__(self, *args, **kwargs):
-        super(LoginForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.fields["username"].widget.input_type = "email"  # ugly hack
 
@@ -30,7 +30,7 @@ class LoginForm(AuthenticationForm):
 class SignupForm(authtoolsforms.UserCreationForm):
 
     def __init__(self, *args, **kwargs):
-        super(SignupForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.fields["email"].widget.input_type = "email"  # ugly hack
 
@@ -46,7 +46,7 @@ class SignupForm(authtoolsforms.UserCreationForm):
 class PasswordChangeForm(authforms.PasswordChangeForm):
 
     def __init__(self, *args, **kwargs):
-        super(PasswordChangeForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
 
         self.helper.layout = Layout(
@@ -61,7 +61,7 @@ class PasswordChangeForm(authforms.PasswordChangeForm):
 class PasswordResetForm(authtoolsforms.FriendlyPasswordResetForm):
 
     def __init__(self, *args, **kwargs):
-        super(PasswordResetForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
 
         self.helper.layout = Layout(
@@ -73,7 +73,7 @@ class PasswordResetForm(authtoolsforms.FriendlyPasswordResetForm):
 
 class SetPasswordForm(authforms.SetPasswordForm):
     def __init__(self, *args, **kwargs):
-        super(SetPasswordForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
 
         self.helper.layout = Layout(

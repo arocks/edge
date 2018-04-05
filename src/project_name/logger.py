@@ -30,12 +30,13 @@ class NewStyleLogMessage(object):
 
         return self.message.format(*args, **kwargs)
 
+
 N = NewStyleLogMessage
 
 
 class StyleAdapter(logging.LoggerAdapter):
     def __init__(self, logger, extra=None):
-        super(StyleAdapter, self).__init__(logger, extra or {})
+        super().__init__(logger, extra or {})
 
     def log(self, level, msg, *args, **kwargs):
         if self.isEnabledFor(level):
