@@ -12,8 +12,8 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / "directory"
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-STATICFILES_DIRS = [BASE_DIR / 'static', ]
-MEDIA_ROOT = BASE_DIR / 'media'
+STATICFILES_DIRS = [str(BASE_DIR / 'static'), ]
+MEDIA_ROOT = str(BASE_DIR / 'media')
 MEDIA_URL = "/media/"
 
 # Use Django templates using the new Django 1.8 TEMPLATES settings
@@ -21,7 +21,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates',
+            str(BASE_DIR / 'templates'),
             # insert more TEMPLATE_DIRS here
         ],
         'APP_DIRS': True,
@@ -45,8 +45,8 @@ TEMPLATES = [
 import environ
 env = environ.Env()
 
-# Ideally move env file should be outside the git repo
-# i.e. BASE_DIR.parent.parent
+# Create a local.env file in the settings directory
+# But ideally this env file should be outside the git repo
 env_file = Path(__file__).resolve().parent / 'local.env'
 if env_file.exists():
     environ.Env.read_env(str(env_file))

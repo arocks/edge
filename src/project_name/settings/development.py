@@ -43,7 +43,7 @@ INTERNAL_IPS = [
 ]
 
 # Log everything to the logs directory at the top
-LOGFILE_ROOT = BASE_DIR.parent / 'logs'
+LOGFILE_ROOT = str(BASE_DIR.parent / 'logs')
 
 # Reset logging
 # (see http://www.caktusgroup.com/blog/2015/01/27/Django-Logging-Configuration-logging_config-default-settings-logger/)
@@ -65,13 +65,13 @@ LOGGING = {
         'django_log_file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': LOGFILE_ROOT / 'django.log',
+            'filename': str(LOGFILE_ROOT / 'django.log'),
             'formatter': 'verbose'
         },
         'proj_log_file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': LOGFILE_ROOT / 'project.log',
+            'filename': str(LOGFILE_ROOT / 'project.log'),
             'formatter': 'verbose'
         },
         'console': {
