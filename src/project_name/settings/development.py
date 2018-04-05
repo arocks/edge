@@ -43,7 +43,7 @@ INTERNAL_IPS = [
 ]
 
 # Log everything to the logs directory at the top
-LOGFILE_ROOT = str(BASE_DIR.parent / 'logs')
+LOGFILE_ROOT = BASE_DIR.parent / 'logs'
 
 # Reset logging
 # (see http://www.caktusgroup.com/blog/2015/01/27/Django-Logging-Configuration-logging_config-default-settings-logger/)

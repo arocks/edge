@@ -49,7 +49,7 @@ TEMPLATES[0].update({"APP_DIRS": False})
 STATIC_ROOT = str(BASE_DIR.parent / 'site' / 'static')
 
 # Log everything to the logs directory at the top
-LOGFILE_ROOT = str(BASE_DIR.parent / 'logs')
+LOGFILE_ROOT = BASE_DIR.parent / 'logs'
 
 # Reset logging
 LOGGING_CONFIG = None
