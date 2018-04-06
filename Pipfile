@@ -9,7 +9,7 @@ name = "pypi"
 
 django = ">=2.0"
 django-environ = ">=0.4.3"
-"e24175f" = {file = "https://github.com/brack3t/django-braces/archive/master.zip"}
+django-braces = ">=1.12.0"
 django-crispy-forms = ">=1.7.2"
 django-authtools = ">=1.6.0"
 easy-thumbnails = ">=2.4.1"

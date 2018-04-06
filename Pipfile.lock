@@ -1,18 +1,18 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "19c6a20de1e54069e101d8f1d74cc8dd12831ddfa06d807e3f834dd8f088ad51"
+            "sha256": "5ec15836495494ab49644e8c433a4f832b55ce8b69cdfaeb0d02266988e8cc80"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
-            "implementation_version": "3.6.2",
+            "implementation_version": "3.6.4",
             "os_name": "posix",
             "platform_machine": "i686",
             "platform_python_implementation": "CPython",
-            "platform_release": "4.13.8-1-ARCH",
+            "platform_release": "4.15.6-1.0-ARCH",
             "platform_system": "Linux",
-            "platform_version": "#1 SMP PREEMPT Wed Oct 18 12:11:48 CEST 2017",
-            "python_full_version": "3.6.2",
+            "platform_version": "#1 SMP PREEMPT Wed Feb 28 22:14:07 CET 2018",
+            "python_full_version": "3.6.4",
             "python_version": "3.6",
             "sys_platform": "linux"
         },
@@ -42,6 +42,13 @@
             ],
             "version": "==1.6.0"
         },
+        "django-braces": {
+            "hashes": [
+                "sha256:7e0cb698f3cd17cc58d50aea4a663233f44228144b81d85e1b9bad05aa7f3f80",
+                "sha256:7c5b91c75240ccf2eb124fe3b09dd4978e8f4d412b553bb791920bd55839159c"
+            ],
+            "version": "==1.12.0"
+        },
         "django-crispy-forms": {
             "hashes": [
                 "sha256:705ededc554ad8736157c666681165fe22ead2dec0d5446d65fc9dd976a5a876",
@@ -55,9 +62,6 @@
                 "sha256:ee2f8405d83137e3328b26b3de01bd715b5395fca22feb919dcc905fb6099cfa"
             ],
             "version": "==0.4.4"
-        },
-        "e24175f": {
-            "file": "https://github.com/brack3t/django-braces/archive/master.zip"
         },
         "easy-thumbnails": {
             "hashes": [
