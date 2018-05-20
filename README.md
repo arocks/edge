@@ -6,6 +6,8 @@
 
 **A Fantastic Django project starter.**
 
+For Django 1.11 [here](https://github.com/triump0870/edge) is a forked version of this repo .
+
 ## Features
 
 * Ready Bootstrap-themed pages
