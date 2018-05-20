@@ -15,6 +15,7 @@ For Django 1.11 [here](https://github.com/triump0870/edge) is a forked version o
 * Better Security with [12-Factor](http://12factor.net/) recommendations
 * Logging/Debugging Helpers
 * Works on Python 2.7 or 3.4
+* Works on Django 2+
 
 ## Quick start:
 
