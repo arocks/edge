@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django-environ = ">=0.4.3"
+"e24175f" = {file = "https://github.com/brack3t/django-braces/archive/master.zip"}
+"b7988fa" = {file = "https://github.com/django-crispy-forms/django-crispy-forms/archive/dev.zip"}
+django-authtools = ">=1.6.0"
+easy-thumbnails = ">=2.4.1"
+django-debug-toolbar = ">=1.8"
+Django = ">=2.0"
+Werkzeug = ">=0.12.2"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
