@@ -1,3 +1,4 @@
+-i https://pypi.python.org/simple
 -r base.txt
 
 # Extra stuff required for production like Prod Database interfacing packages
