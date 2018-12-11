@@ -9,10 +9,10 @@ from . import models
 
 class ShowProfile(LoginRequiredMixin, generic.TemplateView):
     template_name = "profiles/show_profile.html"
-    http_method_names = ['get']
+    http_method_names = ["get"]
 
     def get(self, request, *args, **kwargs):
-        slug = self.kwargs.get('slug')
+        slug = self.kwargs.get("slug")
         if slug:
             profile = get_object_or_404(models.Profile, slug=slug)
             user = profile.user
@@ -27,7 +27,7 @@ class ShowProfile(LoginRequiredMixin, generic.TemplateView):
 
 class EditProfile(LoginRequiredMixin, generic.TemplateView):
     template_name = "profiles/edit_profile.html"
-    http_method_names = ['get', 'post']
+    http_method_names = ["get", "post"]
 
     def get(self, request, *args, **kwargs):
         user = self.request.user
@@ -40,17 +40,17 @@ class EditProfile(LoginRequiredMixin, generic.TemplateView):
     def post(self, request, *args, **kwargs):
         user = self.request.user
         user_form = forms.UserForm(request.POST, instance=user)
-        profile_form = forms.ProfileForm(request.POST,
-                                         request.FILES,
-                                         instance=user.profile)
+        profile_form = forms.ProfileForm(
+            request.POST, request.FILES, instance=user.profile
+        )
         if not (user_form.is_valid() and profile_form.is_valid()):
-            messages.error(request, "There was a problem with the form. "
-                           "Please check the details.")
+            messages.error(
+                request,
+                "There was a problem with the form. " "Please check the details.",
+            )
             user_form = forms.UserForm(instance=user)
             profile_form = forms.ProfileForm(instance=user.profile)
-            return super().get(request,
-                               user_form=user_form,
-                               profile_form=profile_form)
+            return super().get(request, user_form=user_form, profile_form=profile_form)
         # Both forms are fine. Time to save!
         user_form.save()
         profile = profile_form.save(commit=False)

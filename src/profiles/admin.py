@@ -15,17 +15,22 @@ class UserProfileInline(admin.StackedInline):
 
 class NewUserAdmin(NamedUserAdmin):
     inlines = [UserProfileInline]
-    list_display = ('is_active', 'email', 'name', 'permalink',
-                    'is_superuser', 'is_staff',)
+    list_display = (
+        "is_active",
+        "email",
+        "name",
+        "permalink",
+        "is_superuser",
+        "is_staff",
+    )
 
     # 'View on site' didn't work since the original User model needs to
     # have get_absolute_url defined. So showing on the list display
     # was a workaround.
     def permalink(self, obj):
-        url = reverse("profiles:show",
-                      kwargs={"slug": obj.profile.slug})
+        url = reverse("profiles:show", kwargs={"slug": obj.profile.slug})
         # Unicode hex b6 is the Pilcrow sign
-        return format_html('<a href="{}">{}</a>'.format(url, '\xb6'))
+        return format_html('<a href="{}">{}</a>'.format(url, "\xb6"))
 
 
 admin.site.unregister(User)
