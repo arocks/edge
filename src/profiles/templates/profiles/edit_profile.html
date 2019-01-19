@@ -1,22 +1,24 @@
-{% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
+{% extends "base.html" %}
 
-{% templatetag openblock %} load staticfiles {% templatetag closeblock %}
-{% templatetag openblock %} load crispy_forms_tags {% templatetag closeblock %}
-{% templatetag openblock %} load thumbnail {% templatetag closeblock %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load thumbnail %}
 
-{% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openvariable %} block.super {% templatetag closevariable %}Profile{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% block title %}{{ block.super }}Profile{% endblock %}
 
 <!-- Benefits of the Django application -->
-{% templatetag openblock %} block container {% templatetag closeblock %}
+{% block container %}
 
 <div class="container">
+  <div class="container profile-head">
   <h1 class="text-primary">Edit Profile</h1>
-  <hr>
+  </div>
+  <br>
   <div class="row">
     <!-- left column -->
     <div class="col-md-3">
       <div class="text-center">
-        <img title="profile picture" class="img-circle img-responsive" src="{% templatetag openblock %} thumbnail user.profile.picture|default:'default_profile.png' 140x140 crop {% templatetag closeblock %}">
+        <img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.profile.picture|default:'default_profile.png' 140x140 crop %}">
       </div>
     </div>
       
@@ -24,8 +26,8 @@
     <div class="col-md-9">
       <h3>Personal info</h3>
       <form enctype="multipart/form-data" method="post">
-	{% templatetag openblock %} crispy user_form {% templatetag closeblock %}
-	{% templatetag openblock %} crispy profile_form {% templatetag closeblock %}
+	{% crispy user_form %}
+	{% crispy profile_form %}
       </form>
     </div>
   </div>
@@ -33,10 +35,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <a class="btn btn-default pull-right" href="{% templatetag openblock %} url 'accounts:password-change' {% templatetag closeblock %}">Change Password</a>
+      <a class="btn btn-default pull-right" href="{% url 'accounts:password-change' %}">Change Password</a>
     </div>
   </div>
 </div>
-{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% endblock %}
 
 
