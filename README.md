@@ -12,7 +12,8 @@
 * User Registration/Sign up
 * Better Security with [12-Factor](http://12factor.net/) recommendations
 * Logging/Debugging Helpers
-* Works on Python 2.7 or 3.4
+* Works on Python 3 and Django 2
+* Formatted with [Black](https://github.com/ambv/black)
 
 ## Quick start:
 
@@ -20,23 +21,26 @@
 2. `$ cd my_proj`
 3. `$ pip install -r requirements.txt `
 4. `$ cd src`
-5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env` (New!)
+5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env`
 6. `$ python manage.py migrate`
 
 More information at: [http://django-edge.readthedocs.org/][docs]
+Contribute using: [Edge Dev Tools](https://github.com/arocks/edge-devtools)  ✨ 🍰 ✨
 
 [docs]: http://django-edge.readthedocs.org/
 
 
 ## Recommended Installation (with `pipenv`)
-1. [Install pipenv system-wide or locally](https://docs.pipenv.org/) but outside a virtualenv
-2. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env my_proj`
-3. `$ cd my_proj`
-4. `$ pipenv install --dev`
+1. `$ pip install --user --upgrade pipenv` ([Install pipenv system-wide or locally](https://docs.pipenv.org/) but outside a virtualenv)
+3. `$ mkdir my_proj` (choose a better name than `my_proj` for your project)
+2. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env my_proj .`
+3. `$ pipenv install --dev`
 4. `$ pipenv shell`
+5. `$ cp src/my_proj/settings/local.sample.env src/my_proj/settings/local.env` (or rename this file)
 4. `$ cd src`
-5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env` (New!)
 6. `$ python manage.py migrate`
+6. `$ python manage.py createsuperuser`
+6. `$ python manage.py runserver`
 
 If you need to keep `requirements.txt` updated then run
 
