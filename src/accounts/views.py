@@ -54,7 +54,7 @@ class SignUpView(
 class PasswordChangeView(authviews.PasswordChangeView):
     form_class = forms.PasswordChangeForm
     template_name = "accounts/password-change.html"
-    success_url = reverse_lazy("account:logout")
+    success_url = reverse_lazy("accounts:logout")
 
     def form_valid(self, form):
         form.save()
