@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from django.http import request
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import get_user_model
@@ -14,14 +13,13 @@ from . import forms
 User = get_user_model()
 
 
-class LoginView(bracesviews.AnonymousRequiredMixin,
-                authviews.LoginView):
+class LoginView(bracesviews.AnonymousRequiredMixin, authviews.LoginView):
     template_name = "accounts/login.html"
     form_class = forms.LoginForm
 
     def form_valid(self, form):
         redirect = super().form_valid(form)
-        remember_me = form.cleaned_data.get('remember_me')
+        remember_me = form.cleaned_data.get("remember_me")
         if remember_me is True:
             ONE_MONTH = 30 * 24 * 60 * 60
             expiry = getattr(settings, "KEEP_LOGGED_DURATION", ONE_MONTH)
@@ -30,16 +28,18 @@ class LoginView(bracesviews.AnonymousRequiredMixin,
 
 
 class LogoutView(authviews.LogoutView):
-    url = reverse_lazy('home')
+    url = reverse_lazy("home")
 
 
-class SignUpView(bracesviews.AnonymousRequiredMixin,
-                 bracesviews.FormValidMessageMixin,
-                 generic.CreateView):
+class SignUpView(
+    bracesviews.AnonymousRequiredMixin,
+    bracesviews.FormValidMessageMixin,
+    generic.CreateView,
+):
     form_class = forms.SignupForm
     model = User
-    template_name = 'accounts/signup.html'
-    success_url = reverse_lazy('home')
+    template_name = "accounts/signup.html"
+    success_url = reverse_lazy("home")
     form_valid_message = "You're signed up!"
 
     def form_valid(self, form):
@@ -53,30 +53,32 @@ class SignUpView(bracesviews.AnonymousRequiredMixin,
 
 class PasswordChangeView(authviews.PasswordChangeView):
     form_class = forms.PasswordChangeForm
-    template_name = 'accounts/password-change.html'
-    success_url = reverse_lazy('account:logout')
+    template_name = "accounts/password-change.html"
+    success_url = reverse_lazy("account:logout")
 
     def form_valid(self, form):
         form.save()
-        messages.success(self.request,
-                         "Your password was changed, "
-                         "hence you have been logged out. Please relogin")
+        messages.success(
+            self.request,
+            "Your password was changed, "
+            "hence you have been logged out. Please relogin",
+        )
 
         return super().form_valid(form)
 
 
 class PasswordResetView(authviews.PasswordResetView):
     form_class = forms.PasswordResetForm
-    template_name = 'accounts/password-reset.html'
-    success_url = reverse_lazy('accounts:password-reset-done')
-    subject_template_name = 'accounts/emails/password-reset-subject.txt'
-    email_template_name = 'accounts/emails/password-reset-email.html'
+    template_name = "accounts/password-reset.html"
+    success_url = reverse_lazy("accounts:password-reset-done")
+    subject_template_name = "accounts/emails/password-reset-subject.txt"
+    email_template_name = "accounts/emails/password-reset-email.html"
 
 
 class PasswordResetDoneView(authviews.PasswordResetDoneView):
-    template_name = 'accounts/password-reset-done.html'
+    template_name = "accounts/password-reset-done.html"
 
 
 class PasswordResetConfirmView(authviews.PasswordResetConfirmAndLoginView):
-    template_name = 'accounts/password-reset-confirm.html'
+    template_name = "accounts/password-reset-confirm.html"
     form_class = forms.SetPasswordForm
