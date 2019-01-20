@@ -1,4 +1,6 @@
 from __future__ import unicode_literals
+
+from django.http import request
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import get_user_model
@@ -52,13 +54,14 @@ class SignUpView(bracesviews.AnonymousRequiredMixin,
 class PasswordChangeView(authviews.PasswordChangeView):
     form_class = forms.PasswordChangeForm
     template_name = 'accounts/password-change.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('account:logout')
 
     def form_valid(self, form):
         form.save()
         messages.success(self.request,
                          "Your password was changed, "
                          "hence you have been logged out. Please relogin")
+
         return super().form_valid(form)
 
 
