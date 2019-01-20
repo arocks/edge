@@ -14,4 +14,4 @@ def create_profile_handler(sender, instance, created, **kwargs):
     # Create the profile object, only if it is newly created
     profile = models.Profile(user=instance)
     profile.save()
-    logger.info('New user profile for {} created'.format(instance))
+    logger.info("New user profile for {} created".format(instance))
