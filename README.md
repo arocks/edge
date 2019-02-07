@@ -32,15 +32,17 @@ Contribute using: [Edge Dev Tools](https://github.com/arocks/edge-devtools)  ✨
 
 ## Recommended Installation (with `pipenv`)
 1. `$ pip install --user --upgrade pipenv` ([Install pipenv system-wide or locally](https://docs.pipenv.org/) but outside a virtualenv)
-3. `$ mkdir my_proj` (choose a better name than `my_proj` for your project)
-2. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env my_proj .`
-3. `$ pipenv install --dev`
-4. `$ pipenv shell`
-5. `$ cp src/my_proj/settings/local.sample.env src/my_proj/settings/local.env` (or rename this file)
-4. `$ cd src`
-6. `$ python manage.py migrate`
-6. `$ python manage.py createsuperuser`
-6. `$ python manage.py runserver`
+2. `$ mkdir my_proj` (choose a better name than `my_proj` for your project)
+3. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env my_proj .`
+
+    If you get an SSL error, then download the zip file and mention it after `--template=`, like this: `django-admin.py startproject --template=~/Downloads/master.zip --extension=py,md,html,env my_proj .`
+4. `$ pipenv install --dev`
+5. `$ pipenv shell`
+6. `$ cp src/my_proj/settings/local.sample.env src/my_proj/settings/local.env` (or rename this file)
+7. `$ cd src`
+8. `$ python manage.py migrate`
+9. `$ python manage.py createsuperuser`
+10. `$ python manage.py runserver`
 
 If you need to keep `requirements.txt` updated then run
 
