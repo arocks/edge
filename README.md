@@ -1,5 +1,3 @@
-{% comment "This comment section will be deleted in the generated project" %}
-
 # [Edge][docs]
 
 [![Build Status](https://travis-ci.org/arocks/edge.svg?branch=master)](https://travis-ci.org/arocks/edge)
