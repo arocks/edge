@@ -1,0 +1,45 @@
+{% templatetag openblock %} extends "_base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+
+{% templatetag openblock %} block body_extra_classes {% templatetag closeblock %}text-center{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block head_extra {% templatetag closeblock %}
+  <style>
+   html,
+   body {
+     height: 100%;
+   }
+   
+   body {
+     display: flex;
+     align-items: center;
+     padding-top: 40px;
+     padding-bottom: 40px;
+     background-color: #f5f5f5;
+   }
+
+   .auth-form {
+     width: 100%;
+     max-width: 330px;
+     padding: 15px;
+     margin: auto;
+   }
+  </style>
+{% templatetag openblock %} endblock head_extra {% templatetag closeblock %}
+
+{% templatetag openblock %} block body {% templatetag closeblock %}
+
+  <main class="auth-form">
+    {% templatetag openblock %} block content {% templatetag closeblock %}
+      <h1 class="h3 mb-3 fw-normal">{% templatetag openblock %} block headline {% templatetag closeblock %}{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}</h1>
+
+      {% templatetag openblock %} block form_body {% templatetag closeblock %}
+      {% templatetag openblock %} endblock {% templatetag closeblock %}
+    {% templatetag openblock %} endblock content {% templatetag closeblock %}
+  </main>
+
+  {% templatetag openblock %} block extra_body {% templatetag closeblock %}
+  {% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} endblock body {% templatetag closeblock %}

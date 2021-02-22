@@ -1,0 +1,21 @@
+{% templatetag openblock %} extends "account/base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+
+{% templatetag openblock %} block headline {% templatetag closeblock %}{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openblock %} trans "Sign Up" {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block form_body {% templatetag closeblock %}
+
+<div class="mb-5 small">{% templatetag openblock %} blocktrans {% templatetag closeblock %}Already have an account? Then please <a href="{% templatetag openvariable %} login_url {% templatetag closevariable %}">sign in</a>.{% templatetag openblock %} endblocktrans {% templatetag closeblock %}</div>
+
+<form class="signup" method="post" action="{% templatetag openblock %} url 'account_signup' {% templatetag closeblock %}">
+  {% templatetag openblock %} csrf_token {% templatetag closeblock %}
+  {% templatetag openblock %} include 'includes/_bs5_form.html' with form=form hidelabels=True {% templatetag closeblock %}
+
+  {% templatetag openblock %} if redirect_field_value {% templatetag closeblock %}
+  <input type="hidden" name="{% templatetag openvariable %} redirect_field_name {% templatetag closevariable %}" value="{% templatetag openvariable %} redirect_field_value {% templatetag closevariable %}" />
+  {% templatetag openblock %} endif {% templatetag closeblock %}
+    <button class="w-100 btn btn-lg btn-primary" type="submit">{% templatetag openblock %} trans "Sign Up" {% templatetag closeblock %}</button>
+</form>
+
+{% templatetag openblock %} endblock form_body {% templatetag closeblock %}

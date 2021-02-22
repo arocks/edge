@@ -1,0 +1,40 @@
+{% templatetag openblock %} extends "account/base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+{% templatetag openblock %} load account socialaccount {% templatetag closeblock %}
+
+{% templatetag openblock %} block headline {% templatetag closeblock %}{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openblock %} trans "Sign In" {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block head_extra {% templatetag closeblock %}
+  {% templatetag openvariable %} block.super {% templatetag closevariable %}
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <style>
+   .btn-google {
+     color: white;
+     background-color: #ea4335;
+   }
+  </style>
+{% templatetag openblock %} endblock head_extra {% templatetag closeblock %}
+
+
+{% templatetag openblock %} block form_body {% templatetag closeblock %}
+
+  <form class="login" method="post" action="{% templatetag openblock %} url 'account_login' {% templatetag closeblock %}">
+    {% templatetag openblock %} csrf_token {% templatetag closeblock %}
+    {% templatetag openblock %} include 'includes/_bs5_form.html' with form=form hidelabels=True {% templatetag closeblock %}
+    
+    {% templatetag openblock %} if redirect_field_value {% templatetag closeblock %}
+      <input type="hidden" name="{% templatetag openvariable %} redirect_field_name {% templatetag closevariable %}" value="{% templatetag openvariable %} redirect_field_value {% templatetag closevariable %}" />
+    {% templatetag openblock %} endif {% templatetag closeblock %}
+    <button class="w-100 btn btn-lg btn-primary" type="submit">{% templatetag openblock %} trans "Sign In" {% templatetag closeblock %}</button>
+  </form>
+  <div class="mt-4 small">
+    <div class="mb-3">Or sign in using</div>
+    <a href="" class="w-100 btn btn-lg btn-google"><i class="fab fa-google mr-2"></i> Sign in with Google</a>
+  </div>
+  
+  <div class="mt-5 small">
+    <a href="{% templatetag openblock %} url 'account_reset_password' {% templatetag closeblock %}">{% templatetag openblock %} trans "Forgot Password?" {% templatetag closeblock %}</a><br/>
+    {% templatetag openblock %} blocktrans {% templatetag closeblock %}Create an account? <a href="{% templatetag openvariable %} signup_url {% templatetag closevariable %}">Sign up</a>{% templatetag openblock %} endblocktrans {% templatetag closeblock %}<br/>
+  </div>
+{% templatetag openblock %} endblock form_body {% templatetag closeblock %}

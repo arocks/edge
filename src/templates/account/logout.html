@@ -1,0 +1,20 @@
+{% templatetag openblock %} extends "account/base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+
+{% templatetag openblock %} block headline {% templatetag closeblock %}{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openblock %} trans "Leaving?" {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block form_body {% templatetag closeblock %}
+
+  <p>{% templatetag openblock %} trans 'Are you sure you want to sign out?' {% templatetag closeblock %}</p>
+
+  <form class="logout" method="POST" action="{% templatetag openblock %} url 'account_logout' {% templatetag closeblock %}">
+    {% templatetag openblock %} csrf_token {% templatetag closeblock %}
+    {% templatetag openblock %} if redirect_field_value {% templatetag closeblock %}
+        <input type="hidden" name="{% templatetag openvariable %} redirect_field_name {% templatetag closevariable %}" value="{% templatetag openvariable %} redirect_field_value {% templatetag closevariable %}" />
+      {% templatetag openblock %} endif {% templatetag closeblock %}
+      <button class="w-100 btn btn-lg btn-secondary" type="submit">{% templatetag openblock %} trans "Sign Out" {% templatetag closeblock %}</button>
+  </form>
+
+
+{% templatetag openblock %} endblock form_body {% templatetag closeblock %}

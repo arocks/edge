@@ -1,0 +1,53 @@
+{% templatetag openblock %} load formfilters {% templatetag closeblock %}
+
+{% templatetag openblock %} for hidden_field in form.hidden_fields {% templatetag closeblock %}
+  {% templatetag openvariable %} hidden_field {% templatetag closevariable %}
+{% templatetag openblock %} endfor {% templatetag closeblock %}
+
+{% templatetag openblock %} if form.non_field_errors {% templatetag closeblock %}
+  <div class="alert alert-danger" role="alert">
+    {% templatetag openblock %} for error in form.non_field_errors {% templatetag closeblock %}
+      {% templatetag openvariable %} error {% templatetag closevariable %}
+    {% templatetag openblock %} endfor {% templatetag closeblock %}
+  </div>
+{% templatetag openblock %} endif {% templatetag closeblock %}
+
+{% templatetag openblock %} for field in form.visible_fields {% templatetag closeblock %}
+
+  {# Render the field based on the type of field #}
+  {% templatetag openblock %} if field.widget_type == "checkbox" {% templatetag closeblock %}
+    <div class="checkbox mb-3">
+      <label>
+        {% templatetag openvariable %} field {% templatetag closevariable %} {% templatetag openvariable %} field.label {% templatetag closevariable %}
+      </label>
+    </div>
+  {% templatetag openblock %} else {% templatetag closeblock %}
+  <div class="mb-3">
+    <label for="{% templatetag openvariable %} field.id_for_label {% templatetag closevariable %}" class="form-label{% templatetag openblock %} if hidelabels {% templatetag closeblock %} visually-hidden{% templatetag openblock %} endif {% templatetag closeblock %}">{% templatetag openvariable %} field.label {% templatetag closevariable %}{% templatetag openvariable %} form.label_suffix {% templatetag closevariable %}</label>
+    {% templatetag openblock %} if form.is_bound {% templatetag closeblock %}
+      {% templatetag openblock %} if field.errors {% templatetag closeblock %}
+        {% templatetag openvariable %} field|addcss:'form-control is-invalid' {% templatetag closevariable %}
+        {% templatetag openblock %} for error in field.errors {% templatetag closeblock %}
+          <div class="invalid-feedback">
+            {% templatetag openvariable %} error {% templatetag closevariable %}
+          </div>
+        {% templatetag openblock %} endfor {% templatetag closeblock %}
+      {% templatetag openblock %} else {% templatetag closeblock %}
+        {% templatetag openblock %} if form.non_field_errors {% templatetag closeblock %}
+          {% templatetag openvariable %} field|addcss:'form-control' {% templatetag closevariable %}
+        {% templatetag openblock %} else {% templatetag closeblock %}
+          {% templatetag openvariable %} field|addcss:'form-control is-valid' {% templatetag closevariable %}
+        {% templatetag openblock %} endif {% templatetag closeblock %}
+      {% templatetag openblock %} endif {% templatetag closeblock %}
+    {% templatetag openblock %} else {% templatetag closeblock %}
+      {% templatetag openvariable %} field|addcss:'form-control' {% templatetag closevariable %}
+    {% templatetag openblock %} endif {% templatetag closeblock %}
+
+    {% templatetag openblock %} if field.help_text {% templatetag closeblock %}
+      <div class="form-text">{% templatetag openvariable %} field.help_text {% templatetag closevariable %}</div>
+    {% templatetag openblock %} endif {% templatetag closeblock %}
+  </div>
+  {% templatetag openblock %} endif {% templatetag closeblock %}
+{% templatetag openblock %} endfor {% templatetag closeblock %}
+
+

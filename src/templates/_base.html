@@ -1,0 +1,94 @@
+<!doctype html>
+{% templatetag openblock %} load static {% templatetag closeblock %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>{% templatetag openblock %} block head_title {% templatetag closeblock %}Edgy{% templatetag openblock %} endblock {% templatetag closeblock %}</title>
+    <link rel="shortcut icon" href="{% templatetag openblock %} static 'site/images/favicon.ico' {% templatetag closeblock %}">
+    <style>
+     body {
+       padding-top: 5rem;
+     }
+    </style>
+  {% templatetag openblock %} block head_extra {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+  </head>
+  <body class="{% templatetag openblock %} block body_extra_classes {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}">
+
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% templatetag openblock %} url 'site_home' {% templatetag closeblock %}">
+          <img src="{% templatetag openblock %} static 'site/images/logo.svg' {% templatetag closeblock %}" width="45" alt="" class="d-inline-block align-middle mr-2" alt="logo">
+          <span class="text-uppercase align-middle font-weight-bold">edgy</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a><!-- TODO: Make the active link dynamic -->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a><!-- TODO: add About page -->
+            </li>
+          </ul>
+
+
+          <!-- User Menu -->
+          {% templatetag openblock %} if user.is_authenticated {% templatetag closeblock %}
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {% templatetag openvariable %} user.email|truncatechars:20 {% templatetag closevariable %} <!-- TODO: Change this to profile pic-->
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">My profile</a></li>
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="{% templatetag openblock %} url 'account_logout' {% templatetag closeblock %}">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          {% templatetag openblock %} else {% templatetag closeblock %}
+            <a class="btn btn-outline-success mx-2" href="{% templatetag openblock %} url 'account_signup' {% templatetag closeblock %}" role="button">Join</a>
+            <a class="btn btn-outline-primary" href="{% templatetag openblock %} url 'account_login' {% templatetag closeblock %}" role="button">Log In</a>
+          {% templatetag openblock %} endif {% templatetag closeblock %}
+          
+        </div>
+      </div>
+    </nav>
+
+    {% templatetag openblock %} block messages {% templatetag closeblock %}
+      {% templatetag openblock %} if messages {% templatetag closeblock %} <!-- TODO: Test if messages appear -->
+        <div aria-live="polite" aria-atomic="true" class="position-relative">
+          <div class="toast-container position-absolute top-0 end-0 p-3">
+            {% templatetag openblock %} for message in messages {% templatetag closeblock %}
+              <div class="toast align-items-center {% templatetag openblock %} if message.tags {% templatetag closeblock %}{% templatetag openvariable %} message.tags {% templatetag closevariable %}{% templatetag openblock %} endif {% templatetag closeblock %}" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                  <div class="toast-body">
+                    {% templatetag openvariable %} message|safe {% templatetag closevariable %}
+                  </div>
+                  <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+              </div>
+            {% templatetag openblock %} endfor {% templatetag closeblock %}
+          </div>
+        </div>
+      {% templatetag openblock %} endif {% templatetag closeblock %}
+    {% templatetag openblock %} endblock messages {% templatetag closeblock %}
+
+
+    
+    <main class="container">
+      {% templatetag openblock %} block body {% templatetag closeblock %}
+        <h1>Placeholder</h1>
+      {% templatetag openblock %} endblock body {% templatetag closeblock %}
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>

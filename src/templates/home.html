@@ -1,67 +1,16 @@
-{% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
+{% templatetag openblock %} extends "_base.html" {% templatetag closeblock %}
 
-{% templatetag openblock %} load staticfiles {% templatetag closeblock %}
-{% templatetag openblock %} load crispy_forms_tags {% templatetag closeblock %}
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
 
-{% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openvariable %} block.super {% templatetag closevariable %}Home{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openvariable %} block.super {% templatetag closevariable %}{% templatetag openblock %} trans " – Welcome to an amazing product!" {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% templatetag openblock %} block navbar-left {% templatetag closeblock %}
-  {% templatetag openblock %} include "_navbar.html" with active_link="home" {% templatetag closeblock %}
-{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% templatetag openblock %} block body {% templatetag closeblock %}
+  <main class="container">
 
-{% templatetag openblock %} block navbar-right {% templatetag closeblock %}
-  {% templatetag openblock %} if not user.is_authenticated {% templatetag closeblock %}
-<a class="btn btn-default" href="{% templatetag openblock %} url 'accounts:login' {% templatetag closeblock %}" role="button">Log in</a>
-<a class="btn btn-primary" href="{% templatetag openblock %} url 'accounts:signup' {% templatetag closeblock %}" role="button">Sign up</a>
-  {% templatetag openblock %} else {% templatetag closeblock %}
-    {% templatetag openvariable %} block.super {% templatetag closevariable %}
-  {% templatetag openblock %} endif {% templatetag closeblock %}
-{% templatetag openblock %} endblock {% templatetag closeblock %}
-
-{% templatetag openblock %} block splash {% templatetag closeblock %}
-  <div class="jumbotron jumbotron-carousel corporate-jumbo">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-sm-8">
-          <h1>{% templatetag openblock %} include "_brandname.html" {% templatetag closeblock %}</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-	  <a class="btn btn-primary" href="{% templatetag openblock %} url 'accounts:signup' {% templatetag closeblock %}" role="button">Sign up for Free!</a>
-        </div>
-        <div class="col-md-4 col-sm-4">
-
-        </div>
-      </div>
+    <div class="text-center py-5 px-3">
+      <h1>Home</h1>
+      <p class="lead">There is no place like home!</p>
     </div>
-  </div>
-{% templatetag openblock %} endblock splash {% templatetag closeblock %}
-
-{% templatetag openblock %} block container {% templatetag closeblock %}
-<!-- Benefits of the Django application -->
-<a id="about"></a>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-    </div>
-  </div>
-</div>
-
-{% templatetag openblock %} endblock container {% templatetag closeblock %}
-
-{% templatetag openblock %} block scripts {% templatetag closeblock %}
-<script src="{% templatetag openblock %} static 'site/js/site.js' {% templatetag closeblock %}"></script>
-{% templatetag openblock %} endblock scripts {% templatetag closeblock %}
-
+    
+  </main>
+{% templatetag openblock %} endblock body {% templatetag closeblock %}
