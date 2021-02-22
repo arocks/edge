@@ -15,7 +15,20 @@
 * Works on Python 3 and Django 2
 * Formatted with [Black](https://github.com/ambv/black)
 
+More information at: [http://django-edge.readthedocs.org/][docs]
+Contribute using: [Edge Dev Tools](https://github.com/arocks/edge-devtools)  ✨ 🍰 ✨
+
+[docs]: http://django-edge.readthedocs.org/
+
 ## Quick start:
+
+Before creating a new project from this template, you need to create a fresh virtual environment and install Django:
+
+1. `$ python -m venv ./myenv`
+2. `$ source ./myenv/bin/activate.fish` (use the appropriate activate script based on your shell)
+3. `$ python -m pip install -U pip django`
+
+Create your new _edgy_ django project:
 
 1. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env my_proj`
 2. `$ cd my_proj`
@@ -23,11 +36,8 @@
 4. `$ cd src`
 5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env`
 6. `$ python manage.py migrate`
-
-More information at: [http://django-edge.readthedocs.org/][docs]
-Contribute using: [Edge Dev Tools](https://github.com/arocks/edge-devtools)  ✨ 🍰 ✨
-
-[docs]: http://django-edge.readthedocs.org/
+7. `$ python manage.py createsuperuser`
+8. `$ python manage.py runserver`
 
 
 ## Recommended Installation (with `pipenv`)
