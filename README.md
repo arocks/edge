@@ -1,8 +1,8 @@
 {% comment "This comment section will be deleted in the generated project" %}
 
-# [Edge][docs]
+# [Edge (beta)][docs]
 
-[![Build Status](https://travis-ci.org/arocks/edge.svg?branch=master)](https://travis-ci.org/arocks/edge)
+[![Build Status](https://travis-ci.org/arocks/edge.svg?branch=django3)](https://travis-ci.org/arocks/edge)
 
 **A Fantastic Django project starter.**
 
@@ -12,7 +12,7 @@
 * User Registration/Sign up
 * Better Security with [12-Factor](http://12factor.net/) recommendations
 * Logging/Debugging Helpers
-* Works on Python 3 and Django 2
+* Works on Python 3 and Django 3
 * Formatted with [Black](https://github.com/ambv/black)
 
 More information at: [http://django-edge.readthedocs.org/][docs]
@@ -28,13 +28,13 @@ Before creating a new project from this template, you need to create a fresh vir
 2. `$ source ./myenv/bin/activate.fish` (use the appropriate activate script based on your shell)
 3. `$ python -m pip install -U pip django`
 
-Create your new _edgy_ django project:
+Create your new _edgy_ django project (Replace `edgy` in all commands to the name of your project):
 
-1. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env my_proj`
-2. `$ cd my_proj`
+1. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env edgy`
+2. `$ cd edgy`
 3. `$ pip install -r requirements.txt `
 4. `$ cd src`
-5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env`
+5. `$ cp edgy/settings/local.sample.env edgy/settings/local.env`
 6. `$ python manage.py migrate`
 7. `$ python manage.py createsuperuser`
 8. `$ python manage.py runserver`
@@ -42,13 +42,13 @@ Create your new _edgy_ django project:
 
 ## Recommended Installation (with `pipenv`)
 1. `$ pip install --user --upgrade pipenv` ([Install pipenv system-wide or locally](https://docs.pipenv.org/) but outside a virtualenv)
-2. `$ mkdir my_proj` (choose a better name than `my_proj` for your project)
-3. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env my_proj .`
+2. `$ mkdir edgy` (choose a better name than `edgy` for your project)
+3. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env edgy .`
 
-    If you get an SSL error, then download the zip file and mention it after `--template=`, like this: `django-admin.py startproject --template=~/Downloads/master.zip --extension=py,md,html,env my_proj .`
+    If you get an SSL error, then download the zip file and mention it after `--template=`, like this: `django-admin.py startproject --template=~/Downloads/master.zip --extension=py,md,html,env edgy .`
 4. `$ pipenv install --dev`
 5. `$ pipenv shell`
-6. `$ cp src/my_proj/settings/local.sample.env src/my_proj/settings/local.env` (or rename this file)
+6. `$ cp src/edgy/settings/local.sample.env src/edgy/settings/local.env` (or rename this file)
 7. `$ cd src`
 8. `$ python manage.py migrate`
 9. `$ python manage.py createsuperuser`
