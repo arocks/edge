@@ -1,7 +1,8 @@
-Django>=1.8
-django-environ>=0.3.0
-django-braces>=1.8.0
-django-crispy-forms>=1.4.0
-django-admin-bootstrapped>=2.4.0
-django-authtools>=1.2.0
-easy-thumbnails>=2.2
+django-authtools==1.6.0
+django-braces==1.13.0
+django-crispy-forms==1.7.2
+django-environ==0.4.5
+django==2.0.9
+easy-thumbnails==2.5
+pillow==8.1.2
+pytz==2018.7

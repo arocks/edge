@@ -2,7 +2,7 @@
 
 # [Edge][docs]
 
-[![Build Status](https://travis-ci.org/arocks/edge.svg?branch=1_8)](https://travis-ci.org/arocks/edge)
+[![Build Status](https://travis-ci.org/arocks/edge.svg?branch=master)](https://travis-ci.org/arocks/edge)
 
 **A Fantastic Django project starter.**
 
@@ -10,23 +10,55 @@
 
 * Ready Bootstrap-themed pages
 * User Registration/Sign up
-* Better Security with [12-Factor](http://12factor.net/) recommendations 
+* Better Security with [12-Factor](http://12factor.net/) recommendations
 * Logging/Debugging Helpers
-* Works on Python 2.7 or 3.4
+* Works on Python 3 and Django 2
+* Formatted with [Black](https://github.com/ambv/black)
+
+More information at: [http://django-edge.readthedocs.org/][docs]
+Contribute using: [Edge Dev Tools](https://github.com/arocks/edge-devtools)  ✨ 🍰 ✨
+
+[docs]: http://django-edge.readthedocs.org/
 
 ## Quick start:
+
+Before creating a new project from this template, you need to create a fresh virtual environment and install Django:
+
+1. `$ python -m venv ./myenv`
+2. `$ source ./myenv/bin/activate.fish` (use the appropriate activate script based on your shell)
+3. `$ python -m pip install -U pip django`
+
+Create your new _edgy_ django project:
 
 1. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env my_proj`
 2. `$ cd my_proj`
 3. `$ pip install -r requirements.txt `
 4. `$ cd src`
-5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env` (New!)
+5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env`
 6. `$ python manage.py migrate`
+7. `$ python manage.py createsuperuser`
+8. `$ python manage.py runserver`
 
-More information at: [http://django-edge.readthedocs.org/][docs]
 
+## Recommended Installation (with `pipenv`)
+1. `$ pip install --user --upgrade pipenv` ([Install pipenv system-wide or locally](https://docs.pipenv.org/) but outside a virtualenv)
+2. `$ mkdir my_proj` (choose a better name than `my_proj` for your project)
+3. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env my_proj .`
 
-[docs]: http://django-edge.readthedocs.org/
+    If you get an SSL error, then download the zip file and mention it after `--template=`, like this: `django-admin.py startproject --template=~/Downloads/master.zip --extension=py,md,html,env my_proj .`
+4. `$ pipenv install --dev`
+5. `$ pipenv shell`
+6. `$ cp src/my_proj/settings/local.sample.env src/my_proj/settings/local.env` (or rename this file)
+7. `$ cd src`
+8. `$ python manage.py migrate`
+9. `$ python manage.py createsuperuser`
+10. `$ python manage.py runserver`
+
+If you need to keep `requirements.txt` updated then run
+
+    pipenv lock --requirements > requirements/base.txt
+    echo "-r base.txt" > requirements/development.txt
+    pipenv lock --requirements --dev >> requirements/development.txt
 
 Rest of this README will be copied to the generated project.
 
