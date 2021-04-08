@@ -30,7 +30,7 @@ Before creating a new project from this template, you need to create a fresh vir
 
 Create your new _edgy_ django project (Replace `edgy` in all commands to the name of your project):
 
-1. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env edgy`
+1. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/django3.zip --extension=py,md,html,env edgy`
 2. `$ cd edgy`
 3. `$ pip install -r requirements.txt `
 4. `$ cd src`
@@ -43,7 +43,7 @@ Create your new _edgy_ django project (Replace `edgy` in all commands to the nam
 ## Recommended Installation (with `pipenv`)
 1. `$ pip install --user --upgrade pipenv` ([Install pipenv system-wide or locally](https://docs.pipenv.org/) but outside a virtualenv)
 2. `$ mkdir edgy` (choose a better name than `edgy` for your project)
-3. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env edgy .`
+3. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/django3.zip --extension=py,md,html,env edgy .`
 
     If you get an SSL error, then download the zip file and mention it after `--template=`, like this: `django-admin.py startproject --template=~/Downloads/master.zip --extension=py,md,html,env edgy .`
 4. `$ pipenv install --dev`
