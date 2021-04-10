@@ -1,0 +1,43 @@
+{% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load static {% templatetag closeblock %}
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+
+{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openvariable %} block.super {% templatetag closevariable %}{% templatetag openblock %} trans " – Welcome to an amazing product!" {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block body_extra_classes {% templatetag closeblock %}bg-light{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block outer_content {% templatetag closeblock %}
+
+  <section class="main-content {% templatetag openblock %} block main_extra_classes {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}">
+    <main class="container">
+      <div class="row">
+        <div class="d-none d-lg-block d-xl-block col-lg-3">
+          <!-- profile pic card -->
+          <img class="img-fluid mx-auto" src="{% templatetag openblock %} static 'site/images/placeholder-left-card.svg' {% templatetag closeblock %}" alt="placeholder">
+        </div>
+        <div class="col-12 col-lg-7">
+          <main>
+            <div class="text-center p-3">
+              
+              <h1>Home</h1>
+              <p class="lead">There is no place like home!</p>
+              <!-- news feed cards -->
+              <img class="py-2 img-fluid mx-auto" src="{% templatetag openblock %} static 'site/images/placeholder-mid-card.svg' {% templatetag closeblock %}" alt="placeholder">
+              <img class="py-2 img-fluid mx-auto" src="{% templatetag openblock %} static 'site/images/placeholder-mid-card.svg' {% templatetag closeblock %}" alt="placeholder">
+              <img class="py-2 img-fluid mx-auto" src="{% templatetag openblock %} static 'site/images/placeholder-mid-card.svg' {% templatetag closeblock %}" alt="placeholder">
+            </div>
+          </main>
+        </div>
+        <div class="d-none d-lg-block d-xl-block col-lg-2">
+          <!-- right sidebar -->
+          <img class="pt-2 img-fluid mx-auto" src="{% templatetag openblock %} static 'site/images/placeholder-right-card.svg' {% templatetag closeblock %}" alt="placeholder">
+          <img class="pt-2 img-fluid mx-auto" src="{% templatetag openblock %} static 'site/images/placeholder-right-card.svg' {% templatetag closeblock %}" alt="placeholder">
+          <img class="pt-2 img-fluid mx-auto" src="{% templatetag openblock %} static 'site/images/placeholder-right-card.svg' {% templatetag closeblock %}" alt="placeholder">
+        </div>
+      </div>
+    </main>
+  </section>
+
+  
+{% templatetag openblock %} endblock outer_content {% templatetag closeblock %}

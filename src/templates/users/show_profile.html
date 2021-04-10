@@ -1,0 +1,69 @@
+{% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+{% templatetag openblock %} load static {% templatetag closeblock %}
+
+{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openvariable %} block.super {% templatetag closevariable %}{% templatetag openblock %} trans " – Profile" {% templatetag closeblock %} of {% templatetag openvariable %} show_user.name {% templatetag closevariable %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block head_extra {% templatetag closeblock %}
+  <style>
+   .img-profile {
+     max-width: 160px;
+     transform: translate3d(0,-50%,0);
+     background-color: white;
+   }
+   
+   .profile-header {
+     background-color: #330000;
+     height: 400px;
+     background-position: top;
+     
+     transform: translate3d(0px, 0px, 0px);
+     position: absolute;
+     z-index: 1;
+     width: 100%;
+     display: block;
+     left: 0;
+     top: 0;
+     content: "";
+   }
+   
+   .profile-main {
+     background: #fff;
+     position: relative;
+     z-index: 3;
+     margin: 250px 30px 0;
+     border-radius: 6px;
+     min-height: 1000px;
+   }
+
+   .profile-title {
+     margin-top: -80px;
+     padding-top: 30px;
+     padding-bottom: 5px;
+     font-weight: 700;
+     color: #3c4858;
+   }
+  </style>
+{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+
+{% templatetag openblock %} block outer_content {% templatetag closeblock %}
+
+<div class="profile-header" style="background-image: url({% templatetag openblock %} static 'site/images/profile-bg.svg' {% templatetag closeblock %}); "></div>
+  
+  <main class="container profile-main shadow-lg">
+
+    <div class="text-center">
+      <img src="{% templatetag openblock %} if show_user.picture {% templatetag closeblock %}{% templatetag openvariable %} show_user.picture.url {% templatetag closevariable %}{% templatetag openblock %} else {% templatetag closeblock %}{% templatetag openblock %} static 'site/images/default_user_pic.svg' {% templatetag closeblock %}{% templatetag openblock %} endif {% templatetag closeblock %}" alt="Profile Picture" class="rounded-circle img-fluid shadow-sm img-profile">
+      <h3 class="profile-title">{% templatetag openvariable %} show_user.name {% templatetag closevariable %}</h3>
+      
+      <p class="lead">
+        <a href="#"><i class="bi bi-twitter" style="font-size: 1rem; color: #25a4ef;"></i></a>
+        <a href="mailto:{% templatetag openvariable %} show_user.email {% templatetag closevariable %}"><i class="bi bi-envelope-fill px-3" style="font-size: 1rem; color: #2b76ed;"></i></a>
+        <a href="#"><i class="bi bi-facebook" style="font-size: 1rem; color: #3a5a97;"></i></a>
+      </p>
+    </div>
+    
+  </main>
+{% templatetag openblock %} endblock outer_content {% templatetag closeblock %}
