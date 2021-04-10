@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -152,9 +153,26 @@ AUTHENTICATION_BACKENDS = [
 
 # django-allauth needs Site IDs. Can be environment (Dev/Prod) specific.
 # Remember to add a Site for your domain, matching this settings.SITE_ID
-SITE_ID = 1  # Default site 1 named example.com is automatically created
+SITE_ID = 2  # Default site 1 named example.com is automatically created
 
 # Social Auth Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
-    "google": {"APP": {"client_id": "123", "secret": "456", "key": ""}}
+    "google": {
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
+    }
+}
+
+# Mapping Django messages to Bootstrap alerts
+MESSAGE_TAGS = {
+    messages.DEBUG: "alert-secondary",
+    messages.INFO: "alert-info",
+    messages.SUCCESS: "alert-success",
+    messages.WARNING: "alert-warning",
+    messages.ERROR: "alert-danger",
 }
