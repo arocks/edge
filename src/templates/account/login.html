@@ -7,7 +7,6 @@
 
 {% templatetag openblock %} block head_extra {% templatetag closeblock %}
   {% templatetag openvariable %} block.super {% templatetag closevariable %}
-  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
   <style>
    .btn-google {
      color: white;
@@ -19,7 +18,7 @@
 
 {% templatetag openblock %} block form_body {% templatetag closeblock %}
 
-  <form class="login" method="post" action="{% templatetag openblock %} url 'account_login' {% templatetag closeblock %}">
+  <form method="post" action="{% templatetag openblock %} url 'account_login' {% templatetag closeblock %}" class="login">
     {% templatetag openblock %} csrf_token {% templatetag closeblock %}
     {% templatetag openblock %} include 'includes/_bs5_form.html' with form=form hidelabels=True {% templatetag closeblock %}
     
@@ -30,9 +29,15 @@
   </form>
   <div class="mt-4 small">
     <div class="mb-3">Or sign in using</div>
-    <a href="" class="w-100 btn btn-lg btn-google"><i class="fab fa-google mr-2"></i> Sign in with Google</a>
+
+{% templatetag openblock %} get_providers as socialaccount_providers {% templatetag closeblock %}
+
+    {% templatetag openblock %} for provider in socialaccount_providers {% templatetag closeblock %}
+      {% templatetag openblock %} if provider.id == "google" {% templatetag closeblock %}
+            <a title="{{provider.name}}" href="{% templatetag openblock %} provider_login_url provider.id process=process scope=scope auth_params=auth_params {% templatetag closeblock %}" class="w-100 btn btn-lg btn-google"><i class="bi bi-google"></i> Sign in with Google</a>
+      {% templatetag openblock %} endif {% templatetag closeblock %}
+    {% templatetag openblock %} endfor {% templatetag closeblock %}
   </div>
-  
   <div class="mt-5 small">
     <a href="{% templatetag openblock %} url 'account_reset_password' {% templatetag closeblock %}">{% templatetag openblock %} trans "Forgot Password?" {% templatetag closeblock %}</a><br/>
     {% templatetag openblock %} blocktrans {% templatetag closeblock %}Create an account? <a href="{% templatetag openvariable %} signup_url {% templatetag closevariable %}">Sign up</a>{% templatetag openblock %} endblocktrans {% templatetag closeblock %}<br/>

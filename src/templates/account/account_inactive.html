@@ -1,0 +1,9 @@
+{% templatetag openblock %} extends "account/base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+
+{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openblock %} trans "Account Inactive" {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block form_body {% templatetag closeblock %}
+<p>{% templatetag openblock %} trans "This account is inactive." {% templatetag closeblock %}</p>
+{% templatetag openblock %} endblock {% templatetag closeblock %}

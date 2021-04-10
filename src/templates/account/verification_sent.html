@@ -1,0 +1,11 @@
+{% templatetag openblock %} extends "account/base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+
+{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openblock %} trans "Verify Your E-mail Address" {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block form_body {% templatetag closeblock %}
+  
+    <p>{% templatetag openblock %} blocktrans {% templatetag closeblock %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% templatetag openblock %} endblocktrans {% templatetag closeblock %}</p>
+
+{% templatetag openblock %} endblock {% templatetag closeblock %}

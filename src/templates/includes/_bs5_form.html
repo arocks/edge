@@ -14,7 +14,7 @@
 
 {% templatetag openblock %} for field in form.visible_fields {% templatetag closeblock %}
 
-  {# Render the field based on the type of field #}
+  
   {% templatetag openblock %} if field.widget_type == "checkbox" {% templatetag closeblock %}
     <div class="checkbox mb-3">
       <label>

@@ -1,8 +1,6 @@
-{% templatetag openblock %} extends "_base.html" {% templatetag closeblock %}
+{% templatetag openblock %} extends "base.html" {% templatetag closeblock %}
 
 {% templatetag openblock %} load i18n {% templatetag closeblock %}
-
-{% templatetag openblock %} block body_extra_classes {% templatetag closeblock %}text-center{% templatetag openblock %} endblock {% templatetag closeblock %}
 
 {% templatetag openblock %} block head_extra {% templatetag closeblock %}
   <style>
@@ -12,11 +10,12 @@
    }
    
    body {
-     display: flex;
-     align-items: center;
-     padding-top: 40px;
+     padding-top: 70px;
      padding-bottom: 40px;
-     background-color: #f5f5f5;
+     background: #1ECDDC;
+     background: url("/static/site/images/landscape-bg.svg");
+     background-size: cover;
+     background-position: center bottom;
    }
 
    .auth-form {
@@ -24,22 +23,33 @@
      max-width: 330px;
      padding: 15px;
      margin: auto;
+     background-color: rgba(255,255,255,.9);
    }
   </style>
 {% templatetag openblock %} endblock head_extra {% templatetag closeblock %}
 
-{% templatetag openblock %} block body {% templatetag closeblock %}
+{% templatetag openblock %} block outer_content {% templatetag closeblock %}
+  <section class="main-content {% templatetag openblock %} block main_extra_classes {% templatetag closeblock %}text-center{% templatetag openblock %} endblock {% templatetag closeblock %}">
+    <main class="container">
+      <div class="row">
+        <div class="col-12">
 
-  <main class="auth-form">
-    {% templatetag openblock %} block content {% templatetag closeblock %}
-      <h1 class="h3 mb-3 fw-normal">{% templatetag openblock %} block headline {% templatetag closeblock %}{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}</h1>
+          <main class="auth-form mt-3 mt-md-5">
+            <i class="bi {% templatetag openblock %} block central_icon {% templatetag closeblock %}bi-person-circle{% templatetag openblock %} endblock {% templatetag closeblock %}" style="font-size: 5rem; color: #555;"></i>
+            {% templatetag openblock %} block content {% templatetag closeblock %}
+              <h1 class="h3 mb-3 fw-normal">{% templatetag openblock %} block headline {% templatetag closeblock %}{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}</h1>
 
-      {% templatetag openblock %} block form_body {% templatetag closeblock %}
-      {% templatetag openblock %} endblock {% templatetag closeblock %}
-    {% templatetag openblock %} endblock content {% templatetag closeblock %}
-  </main>
+              {% templatetag openblock %} block form_body {% templatetag closeblock %}
+              {% templatetag openblock %} endblock {% templatetag closeblock %}
+              
+            {% templatetag openblock %} endblock content {% templatetag closeblock %}
+          </main>
 
-  {% templatetag openblock %} block extra_body {% templatetag closeblock %}
-  {% templatetag openblock %} endblock {% templatetag closeblock %}
-
-{% templatetag openblock %} endblock body {% templatetag closeblock %}
+          {% templatetag openblock %} block body_extra {% templatetag closeblock %}
+          {% templatetag openblock %} endblock {% templatetag closeblock %}
+        </div>
+      </div>
+    </main>
+  </section>
+  
+{% templatetag openblock %} endblock outer_content {% templatetag closeblock %}

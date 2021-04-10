@@ -1,0 +1,75 @@
+{% templatetag openblock %} extends "account/base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+
+{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openblock %} trans "E-mail Addresses" {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block form_body {% templatetag closeblock %}
+  
+{% templatetag openblock %} if user.emailaddress_set.all {% templatetag closeblock %}
+<p>{% templatetag openblock %} trans 'The following e-mail addresses are associated with your account:' {% templatetag closeblock %}</p>
+
+<form action="{% templatetag openblock %} url 'account_email' {% templatetag closeblock %}" class="email_list" method="post">
+{% templatetag openblock %} csrf_token {% templatetag closeblock %}
+<fieldset class="blockLabels">
+
+  {% templatetag openblock %} for emailaddress in user.emailaddress_set.all {% templatetag closeblock %}
+<div class="form-check my-2">
+      <label for="email_radio_{{forloop.counter}}" class="form-check-label{% templatetag openblock %} if emailaddress.primary {% templatetag closeblock %} primary_email{% templatetag openblock %} endif {% templatetag closeblock %}">
+
+      <input id="email_radio_{{forloop.counter}}" type="radio" name="email" {% templatetag openblock %} if emailaddress.primary or user.emailaddress_set.count == 1 {% templatetag closeblock %}checked="checked"{% templatetag openblock %} endif {% templatetag closeblock %} class="form-check-input" value="{{emailaddress.email}}"/>
+
+{% templatetag openvariable %} emailaddress.email {% templatetag closevariable %}
+    {% templatetag openblock %} if emailaddress.verified {% templatetag closeblock %}
+      <span class="badge rounded-pill bg-success">{% templatetag openblock %} trans "Verified" {% templatetag closeblock %}</span>
+    {% templatetag openblock %} else {% templatetag closeblock %}
+      <span class="badge rounded-pill bg-secondary">{% templatetag openblock %} trans "Unverified" {% templatetag closeblock %}</span>
+    {% templatetag openblock %} endif {% templatetag closeblock %}
+      {% templatetag openblock %} if emailaddress.primary {% templatetag closeblock %}<span class="badge rounded-pill bg-primary">{% templatetag openblock %} trans "Primary" {% templatetag closeblock %}</span>{% templatetag openblock %} endif {% templatetag closeblock %}
+</label>
+</div>
+  {% templatetag openblock %} endfor {% templatetag closeblock %}
+
+<div class="btn-group-vertical mt-2">
+      <button class="w-100 btn btn-lg btn-outline-secondary secondaryAction" type="submit" name="action_primary" >{% templatetag openblock %} trans 'Make Primary' {% templatetag closeblock %}</button>
+      <button class="w-100 btn btn-lg btn-outline-secondary secondaryAction" type="submit" name="action_send" >{% templatetag openblock %} trans 'Re-send Verification' {% templatetag closeblock %}</button>
+      <button class="w-100 btn btn-lg btn-warning primaryAction" type="submit" name="action_remove" >{% templatetag openblock %} trans 'Remove' {% templatetag closeblock %}</button>
+</div>
+
+</fieldset>
+</form>
+
+{% templatetag openblock %} else {% templatetag closeblock %}
+<p><strong>{% templatetag openblock %} trans 'Warning:'%}</strong> {% templatetag openblock %} trans "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc." {% templatetag closeblock %}</p>
+
+{% templatetag openblock %} endif {% templatetag closeblock %}
+
+  {% templatetag openblock %} if can_add_email {% templatetag closeblock %}
+    <h5 class="mt-5">{% templatetag openblock %} trans "Add E-mail Address" {% templatetag closeblock %}</h5>
+
+    <form method="post" action="{% templatetag openblock %} url 'account_email' {% templatetag closeblock %}" class="add_email">
+        {% templatetag openblock %} csrf_token {% templatetag closeblock %}
+        {% templatetag openblock %} include 'includes/_bs5_form.html' with form=form hidelabels=True {% templatetag closeblock %}
+      <button class="w-100 btn btn-lg btn-primary" name="action_add" type="submit">{% templatetag openblock %} trans "Add E-mail" {% templatetag closeblock %}</button>
+
+    </form>
+  {% templatetag openblock %} endif {% templatetag closeblock %}
+
+{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+
+{% templatetag openblock %} block body_extra {% templatetag closeblock %}
+<script type="text/javascript">
+(function() {
+  var message = "{% templatetag openblock %} trans 'Do you really want to remove the selected e-mail address?' {% templatetag closeblock %}";
+  var actions = document.getElementsByName('action_remove');
+  if (actions.length) {
+    actions[0].addEventListener("click", function(e) {
+      if (! confirm(message)) {
+        e.preventDefault();
+      }
+    });
+  }
+})();
+</script>
+{% templatetag openblock %} endblock {% templatetag closeblock %}

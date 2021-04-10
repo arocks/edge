@@ -1,0 +1,22 @@
+{% templatetag openblock %} extends "account/base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+
+{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openblock %} trans "Verify Your E-mail Address" {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block form_body {% templatetag closeblock %}
+  
+{% templatetag openblock %} url 'account_email' as email_url {% templatetag closeblock %}
+
+<p>{% templatetag openblock %} blocktrans {% templatetag closeblock %}This part of the site requires us to verify that
+you are who you claim to be. For this purpose, we require that you
+verify ownership of your e-mail address. {% templatetag openblock %} endblocktrans {% templatetag closeblock %}</p>
+
+<p>{% templatetag openblock %} blocktrans {% templatetag closeblock %}We have sent an e-mail to you for
+verification. Please click on the link inside this e-mail. Please
+contact us if you do not receive it within a few minutes.{% templatetag openblock %} endblocktrans {% templatetag closeblock %}</p>
+
+<p>{% templatetag openblock %} blocktrans {% templatetag closeblock %}<strong>Note:</strong> you can still <a href="{% templatetag openvariable %} email_url {% templatetag closevariable %}">change your e-mail address</a>.{% templatetag openblock %} endblocktrans {% templatetag closeblock %}</p>
+
+
+{% templatetag openblock %} endblock {% templatetag closeblock %}

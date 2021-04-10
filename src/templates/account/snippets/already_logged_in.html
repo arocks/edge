@@ -1,0 +1,5 @@
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+{% templatetag openblock %} load account {% templatetag closeblock %}
+
+{% templatetag openblock %} user_display user as user_display {% templatetag closeblock %}
+<p><strong>{% templatetag openblock %} trans "Note" {% templatetag closeblock %}:</strong> {% templatetag openblock %} blocktrans {% templatetag closeblock %}you are already logged in as {% templatetag openvariable %} user_display {% templatetag closevariable %}.{% templatetag openblock %} endblocktrans {% templatetag closeblock %}</p>

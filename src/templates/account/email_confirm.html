@@ -1,0 +1,30 @@
+{% templatetag openblock %} extends "account/base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+{% templatetag openblock %} load account {% templatetag closeblock %}
+
+{% templatetag openblock %} block head_title {% templatetag closeblock %}{% templatetag openblock %} trans "Confirm E-mail Address" {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+
+{% templatetag openblock %} block form_body {% templatetag closeblock %}
+
+{% templatetag openblock %} if confirmation {% templatetag closeblock %}
+
+{% templatetag openblock %} user_display confirmation.email_address.user as user_display {% templatetag closeblock %}
+
+<p>{% templatetag openblock %} blocktrans with confirmation.email_address.email as email {% templatetag closeblock %}Please confirm that <a href="mailto:{% templatetag openvariable %} email {% templatetag closevariable %}">{% templatetag openvariable %} email {% templatetag closevariable %}</a> is an e-mail address for user {% templatetag openvariable %} user_display {% templatetag closevariable %}.{% templatetag openblock %} endblocktrans {% templatetag closeblock %}</p>
+
+<form method="post" action="{% templatetag openblock %} url 'account_confirm_email' confirmation.key {% templatetag closeblock %}">
+{% templatetag openblock %} csrf_token {% templatetag closeblock %}
+  <button class="w-100 btn btn-lg btn-primary" type="submit">{% templatetag openblock %} trans 'Confirm' {% templatetag closeblock %}</button>
+</form>
+
+{% templatetag openblock %} else {% templatetag closeblock %}
+
+{% templatetag openblock %} url 'account_email' as email_url {% templatetag closeblock %}
+
+<p>{% templatetag openblock %} blocktrans {% templatetag closeblock %}This e-mail confirmation link expired or is invalid. Please <a href="{% templatetag openvariable %} email_url {% templatetag closevariable %}">issue a new e-mail confirmation request</a>.{% templatetag openblock %} endblocktrans {% templatetag closeblock %}</p>
+
+{% templatetag openblock %} endif {% templatetag closeblock %}
+
+{% templatetag openblock %} endblock {% templatetag closeblock %}
