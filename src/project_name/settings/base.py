@@ -29,10 +29,13 @@ SECRET_KEY = "{{ secret_key }}"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Allowed hosts will need to be overridden in development/production
 ALLOWED_HOSTS = []
 
-# Application definition
+# Must be explicitly set in Django 3.x. For compatibility with allauth this is set to AutoField
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
+# Application definition
 INSTALLED_APPS = [
     # Django built-in apps
     "django.contrib.admin",
