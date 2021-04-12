@@ -20,12 +20,16 @@ Contribute using: [Edge Dev Tools](https://github.com/arocks/edge-devtools)  ✨
 
 [docs]: http://django-edge.readthedocs.org/
 
-## Quick start (Linux)
+## Quick start
 
 Before creating a new project from this template, you need to create a fresh virtual environment and install Django:
 
 1. `$ python -m venv ./myenv`
-2. `$ source ./myenv/bin/activate` (use the appropriate activate script based on your OS/shell)
+2.  Pick the appropriate activate script based on your OS/shell
+    *  On Windows: `.\myenv\Scripts\activate.bat` 
+    *  On Linux/bash: `$ source ./myenv/bin/activate`
+    *  On Linux/fish: `$ source ./myenv/bin/activate.fish`
+    
 3. `$ python -m pip install -U pip wheel django`
 
 Create your new _edgy_ django project (Replace `edgy` in all commands to the name of your project):
@@ -60,19 +64,17 @@ This project has the following basic apps:
 
 ### Quick start
 
-To set up a development environment quickly, first install Python 3. It
-comes with virtualenv built-in. So create a virtual env by:
+To set up a development environment quickly, first create a virtual env. Then run these commands:
 
-    1. `$ python3 -m venv {{ project_name }}`
-    2. `$ . {{ project_name }}/bin/activate`
+1. `$ cd {{ project_name }}`
+2. `$ pip install -r requirements.txt `
+3. `$ cd src`
+4. `$ cp edgy/settings/local.sample.env edgy/settings/local.env` (alterntively, setup the environment vars)
+5. `$ python manage.py migrate`
+6. `$ python manage.py createsuperuser`
+7. `$ python manage.py runserver`
 
-Install all dependencies:
-
-    pip install -r requirements.txt
-
-Run migrations:
-
-    python manage.py migrate
+Open your browser and login using the superuser credentials you used in step 6!
 
 ### Detailed instructions
 
