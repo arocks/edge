@@ -20,17 +20,17 @@ Contribute using: [Edge Dev Tools](https://github.com/arocks/edge-devtools)  ✨
 
 [docs]: http://django-edge.readthedocs.org/
 
-## Quick start:
+## Quick start (Linux)
 
 Before creating a new project from this template, you need to create a fresh virtual environment and install Django:
 
 1. `$ python -m venv ./myenv`
-2. `$ source ./myenv/bin/activate.fish` (use the appropriate activate script based on your shell)
-3. `$ python -m pip install -U pip django`
+2. `$ source ./myenv/bin/activate` (use the appropriate activate script based on your OS/shell)
+3. `$ python -m pip install -U pip wheel django`
 
 Create your new _edgy_ django project (Replace `edgy` in all commands to the name of your project):
 
-1. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/django3.zip --extension=py,md,html,env edgy`
+1. `$ django-admin startproject --template=https://github.com/arocks/edge/archive/django3.zip --extension=py,md,html,env edgy`
 2. `$ cd edgy`
 3. `$ pip install -r requirements.txt `
 4. `$ cd src`
@@ -39,26 +39,6 @@ Create your new _edgy_ django project (Replace `edgy` in all commands to the nam
 7. `$ python manage.py createsuperuser`
 8. `$ python manage.py runserver`
 
-
-## Recommended Installation (with `pipenv`)
-1. `$ pip install --user --upgrade pipenv` ([Install pipenv system-wide or locally](https://docs.pipenv.org/) but outside a virtualenv)
-2. `$ mkdir edgy` (choose a better name than `edgy` for your project)
-3. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/django3.zip --extension=py,md,html,env edgy .`
-
-    If you get an SSL error, then download the zip file and mention it after `--template=`, like this: `django-admin.py startproject --template=~/Downloads/master.zip --extension=py,md,html,env edgy .`
-4. `$ pipenv install --dev`
-5. `$ pipenv shell`
-6. `$ cp src/edgy/settings/local.sample.env src/edgy/settings/local.env` (or rename this file)
-7. `$ cd src`
-8. `$ python manage.py migrate`
-9. `$ python manage.py createsuperuser`
-10. `$ python manage.py runserver`
-
-If you need to keep `requirements.txt` updated then run
-
-    pipenv lock --requirements > requirements/base.txt
-    echo "-r base.txt" > requirements/development.txt
-    pipenv lock --requirements --dev >> requirements/development.txt
 
 Rest of this README will be copied to the generated project.
 
@@ -74,7 +54,7 @@ This project has the following basic apps:
 
 * App1 (short desc)
 * App2 (short desc)
-* App3 (short desc)
+* `users` (Custom User model with user profile views)
 
 ## Installation
 
