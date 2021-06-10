@@ -2,7 +2,7 @@ django-authtools==1.6.0
 django-braces==1.13.0
 django-crispy-forms==1.7.2
 django-environ==0.4.5
-django==2.0.9
+django==2.2.24
 easy-thumbnails==2.5
 pillow==8.1.2
 pytz==2018.7
