@@ -4,5 +4,5 @@ django-crispy-forms==1.7.2
 django-environ==0.4.5
 django==2.0.9
 easy-thumbnails==2.5
-pillow==8.1.2
+pillow==8.3.2
 pytz==2018.7
